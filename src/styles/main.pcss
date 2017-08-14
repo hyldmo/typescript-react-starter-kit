@@ -1,0 +1,42 @@
+@import "normalize.css";
+@import "./variables.pcss";
+
+* {
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+    overflow-y: overlay;
+}
+
+#root > div {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: "nav  nav   nav"
+                         "left main   right"
+                         "left footer right";
+
+    grid-template-rows: var(--header-height) 1fr 4rem;
+    grid-template-columns: var(--grid-columns);
+}
+
+@media (--medium) {
+    #root > div, header {
+        grid-template-columns: 0 auto 0;
+    }
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}
+
+
+nav, main, footer {
+    padding: 0 20px;
+}

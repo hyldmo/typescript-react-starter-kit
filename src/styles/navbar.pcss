@@ -1,0 +1,27 @@
+@import "./variables.pcss";
+
+header {
+    grid-area: nav;
+    border-bottom: 1px solid #e9e9e9;
+
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+
+    & nav {
+        grid-column: 2 / 3;
+
+        & ul {
+            list-style: none;
+            margin: calc(var(--header-height) / 3) 0;
+            padding: 0;
+
+            & li {
+                display: inline-block;
+                &:not(:last-child)::after {
+                    content: "|";
+                    margin: 0.3rem;
+                }
+            }
+        }
+    }
+}
