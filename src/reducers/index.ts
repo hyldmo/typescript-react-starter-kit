@@ -3,6 +3,7 @@ import { combineReducers } from 'redux'
 import version from './version'
 
 export type State = Readonly<{
+	version: string
 	routing: RouterState
 }>
 

@@ -9,5 +9,6 @@ export default function * watchConnects () {
 
 function* fetchVersion (action: typeof Actions.fetchVersion) {
 	const response: Response = yield call(fetch, action.payload)
-	yield put(Actions.versionFetched(response.body.toString()))
+	const body = yield response.json()
+	yield put(Actions.versionFetched(body.version))
 }

@@ -6,7 +6,7 @@ import { Actions } from '../actions'
 import { State } from '../reducers'
 
 const mapStateToProps = (state: State) => ({
-	pathname: state.routing.location.pathname
+	version: state.version
 })
 
 const dispatchToProps = {
@@ -21,14 +21,14 @@ class Version extends React.Component<Props> {
 		this.props.fetchVersion('https://raw.githubusercontent.com/eivhyl/typescript-react-starter-kit/master/package.json')
 	}
 
-	render() {
+	render () {
 		return (
-			<div>
-				
-			</div>
+			<h1>
+				Version: {this.props.version}
+			</h1>
 		)
 	}
-} 
+}
 
 export default connect(
 	mapStateToProps,
