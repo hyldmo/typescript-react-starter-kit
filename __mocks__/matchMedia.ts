@@ -7,3 +7,9 @@ window.matchMedia = window.matchMedia || function () {
 		removeListener: () => undefined
 	}
 }
+
+window.requestAnimationFrame = (callback) => {
+	setTimeout(callback, 0)
+	return 0
+}
+

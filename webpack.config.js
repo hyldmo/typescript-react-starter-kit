@@ -47,7 +47,11 @@ module.exports = {
     plugins: [
         new CheckerPlugin(),
         new HtmlWebpackPlugin({
-            title: packageJSON.name,
+            title: packageJSON.name
+                .split('-')
+                .map(name => name.charAt(0).toUpperCase() + name.slice(1))
+                .join(' '),
+            version: packageJSON.version,
             template: 'static/index.ejs',
         }),
         new webpack.DefinePlugin({

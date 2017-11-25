@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { RouteProps } from 'react-router'
+import { RouteComponentProps } from 'react-router'
 
-const NotFound: React.StatelessComponent<RouteProps> = ({ location }) => (
+const NotFound: React.StatelessComponent<RouteComponentProps<any>> = ({ location }) => (
 	<div>
 		<h1>No match for <code>{location.pathname}</code></h1>
 	</div>

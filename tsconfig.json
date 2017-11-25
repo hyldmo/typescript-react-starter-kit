@@ -4,6 +4,8 @@
 		"sourceMap": true,
 		"allowJs": true,
 		"checkJs": true,
+		"strict": false,
+		"noUnusedLocals": true,
 		"noStrictGenericChecks": false,
 		"module": "commonjs",
 		"target": "es5",
