@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as renderer from 'react-test-renderer'
 
-import '../__mocks__/matchMedia'
+import '../__mocks__'
 
 import App from '../src/containers/App'
 import Root from '../src/containers/Root'

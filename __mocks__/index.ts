@@ -1,4 +1,4 @@
-// tslint:disable-next-line:only-arrow-functions
+// tslint:disable:only-arrow-functions
 window.matchMedia = window.matchMedia || function () {
 	return {
 		media: '',
@@ -8,7 +8,7 @@ window.matchMedia = window.matchMedia || function () {
 	}
 }
 
-window.requestAnimationFrame = (callback) => {
+window.requestAnimationFrame = window.requestAnimationFrame || function (callback) {
 	setTimeout(callback, 0)
 	return 0
 }
