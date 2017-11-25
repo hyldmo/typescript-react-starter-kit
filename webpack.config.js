@@ -55,7 +55,9 @@ module.exports = {
             template: 'static/index.ejs',
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+            'process.env.PACKAGE_NAME': JSON.stringify(packageJSON.name),
+            'process.env.PACKAGE_VERSION': JSON.stringify(packageJSON.version)
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({ 

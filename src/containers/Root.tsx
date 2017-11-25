@@ -18,6 +18,10 @@ export default class Root extends React.Component {
 		error: null
 	}
 
+	componentWillReceiveProps () {
+		this.setState({ error: null })
+	}
+
 	componentDidCatch (error: Error, info: React.ErrorInfo) {
 		// Display fallback UI
 		this.setState({ error })
@@ -34,7 +38,7 @@ export default class Root extends React.Component {
 				<ConnectedRouter history={history}>
 					{module.hot ? (
 						<AppContainer>
-							{this.props.children}
+							{this.props.children as React.ReactElement<any>}
 						</AppContainer>
 					) : (
 						this.props.children

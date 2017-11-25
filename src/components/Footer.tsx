@@ -2,7 +2,13 @@ import * as React from 'react'
 
 const Footer: React.StatelessComponent = (props) =>  (
 	<footer>
-		<span>Footer</span>
+		<span>
+			{process.env.PACKAGE_NAME
+				.split('-')
+				.map(name => name.charAt(0).toUpperCase() + name.slice(1))
+				.join(' ')}
+			&nbsp;{process.env.PACKAGE_VERSION}
+		</span>
 	</footer>
 )
 
