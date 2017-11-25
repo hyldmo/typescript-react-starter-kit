@@ -29,7 +29,7 @@ export default class Root extends React.Component {
 
 	render () {
 		const { error } = this.state
-		if (error !== null) {
+		if (error !== null && process.env.NODE_ENV !== 'test') {
 			// You can render any custom fallback UI
 			return <RedBox error={error} />
 		}

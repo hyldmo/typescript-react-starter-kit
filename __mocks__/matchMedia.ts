@@ -13,3 +13,6 @@ window.requestAnimationFrame = (callback) => {
 	return 0
 }
 
+// Fix for webpack env definitions
+process.env.PACKAGE_NAME = ''
+process.env.PACKAGE_VERSION = ''
