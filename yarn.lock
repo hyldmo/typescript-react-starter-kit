@@ -35,7 +35,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-redux@5.0.13":
+"@types/react-redux@^5.0.13":
   version "5.0.13"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.13.tgz#dcc67764b7455ed54422a0302fedf47e32db3579"
   dependencies:
@@ -50,7 +50,7 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router-redux@^5.0.3":
+"@types/react-router-redux@^5.0.10":
   version "5.0.10"
   resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-5.0.10.tgz#42f612fe6c608e2803b476c035ef81606bdd3bbf"
   dependencies:
@@ -58,7 +58,7 @@
     "@types/react" "*"
     redux "^3.7.2"
 
-"@types/react-router@*", "@types/react-router@^4.0.14":
+"@types/react-router@*", "@types/react-router@^4.0.18":
   version "4.0.18"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.18.tgz#a990a89e797b1c77dc8651774b95649e642fd374"
   dependencies:
@@ -75,9 +75,9 @@
   version "16.0.25"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.25.tgz#bf696b83fe480c5e0eff4335ee39ebc95884a1ed"
 
-"@types/redux-actions@^1.2.2":
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/@types/redux-actions/-/redux-actions-1.2.8.tgz#ef8c3dd346cc5d10c30e9f23c9b2bf56a719b969"
+"@types/redux-actions@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@types/redux-actions/-/redux-actions-2.2.3.tgz#a11777808ec37ef7246f70bed770cab3510cf926"
 
 "@types/source-map@*":
   version "0.5.2"
