@@ -1,7 +1,16 @@
 language: node_js
 node_js:
   - "8"
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - chmod +x ./scripts/prepublish.test.sh
+
 script:
+  - ./scripts/prepublish.test.sh
   - npm run lint
   - npm test
   - npm run production
