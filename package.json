@@ -1,6 +1,6 @@
 {
-    "name": "typescript-react-starter-kit",
-    "repository": "https://github.com/eivhyl/typescript-react-starter-kit",
+    "name": "typescript-react-scripts",
+    "repository": "https://github.com/eivhyl/typescript-react-scripts",
     "version": "1.0.0",
     "scripts": {
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.development.config.js --progress --colors",

@@ -4,10 +4,10 @@ import * as path from 'path'
 it('copies run scripts to package.json', async (done) => {
 	// Arrange
 	const origPackagePath = path.resolve(__dirname, '../package.json')
-
+	const packageName = require(origPackagePath).name
 	const testPath = path.join(__dirname, 'postinstall-test')
 	const modulePath = path.join(testPath, 'node_modules')
-	const scriptsFolder = path.join(modulePath, 'ts-scripts')
+	const scriptsFolder = path.join(modulePath, packageName)
 
 	await remove(testPath)
 
