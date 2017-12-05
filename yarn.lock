@@ -6,6 +6,12 @@
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/@std/esm/-/esm-0.16.0.tgz#2a7a33ecb7f1701cebd4c87df6d0d945ed51f730"
 
+"@types/fs-extra@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-4.0.5.tgz#8aa6033c0e87c653b09a6711686916864b48ec9e"
+  dependencies:
+    "@types/node" "*"
+
 "@types/history@*", "@types/history@^4.6.0":
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.2.tgz#12cfaba693ba20f114ed5765467ff25fdf67ddb0"
