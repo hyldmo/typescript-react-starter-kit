@@ -3,7 +3,7 @@ libname='typescript-react-scripts'
 
 mkdir prepublish_test
 mkdir prepublish_test/lib/
-mkdir prepublish_test/lib/react/
+mkdir prepublish_test/lib/$libname/
 cp package.json prepublish_test/lib/$libname/package.json
 cp -r scripts prepublish_test/lib/$libname/
 cp __tests__/package-testfile.json prepublish_test/package.json
