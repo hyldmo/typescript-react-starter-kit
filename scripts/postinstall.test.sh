@@ -6,7 +6,7 @@ mkdir prepublish_test/lib/
 mkdir prepublish_test/lib/$libname/
 cp package.json prepublish_test/lib/$libname/package.json
 cp -r scripts prepublish_test/lib/$libname/
-cp __tests__/testfiles/package-testfile.json prepublish_test/package.json
+cp __tests__/testfiles/package.json prepublish_test/package.json
 
 cd prepublish_test
 
