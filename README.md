@@ -1,4 +1,4 @@
-# Typescript React Starter Kit [![Build Status](https://travis-ci.org/eivhyl/typescript-react-scripts.svg?branch=master)](https://travis-ci.org/eivhyl/typescript-react-scripts) [![Dependencies](https://david-dm.org/eivhyl/typescript-react-scripts.svg)](https://david-dm.org/eivhyl/typescript-react-script) 
+# Typescript React Starter Kit [![Build Status](https://travis-ci.org/eivhyl/typescript-react-scripts.svg?branch=master)](https://travis-ci.org/eivhyl/typescript-react-scripts) [![Dependencies](https://david-dm.org/eivhyl/typescript-react-scripts.svg)](https://david-dm.org/eivhyl/typescript-react-scripts) 
 
 Starter kit for Typescript & React with Redux and CSSNext
 
