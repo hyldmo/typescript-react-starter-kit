@@ -1,5 +1,4 @@
 {
-
     "extends": [
         "tslint-eslint-rules",
         "tslint:recommended"
