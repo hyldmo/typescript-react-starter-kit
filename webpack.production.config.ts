@@ -1,10 +1,11 @@
-const CONFIG = require('./webpack.config.ts')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const webpack = require('webpack')
+import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import * as webpack from 'webpack'
+import { CONFIG, PORT } from './webpack.config'
 
-CONFIG.module.rules[1].use.unshift(MiniCssExtractPlugin.loader)
+(CONFIG.module.rules[1] as any).use.unshift(MiniCssExtractPlugin.loader)
 
-module.exports = Object.assign(CONFIG, {
+const config: webpack.Configuration = {
+	...CONFIG,
 	mode: 'production',
 	devtool: 'source-map',
 	plugins: [
@@ -14,4 +15,6 @@ module.exports = Object.assign(CONFIG, {
 	  	}),
 		...CONFIG.plugins
 	]
-})
+}
+
+module.exports = config
