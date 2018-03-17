@@ -14,7 +14,7 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: '[name][hash].js'
     },
 
     devServer: { port },
@@ -72,7 +72,7 @@ module.exports = {
         chunks: false,
         hash: false,
         modules: false,
-        publicPath: false,
+        publicPath: true,
         timings: false,
         version: false,
         warnings: true,

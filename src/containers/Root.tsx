@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import RedBox from 'redbox-react'
 import configureStore, { history } from '../configureStore'
 import { State } from '../reducers'
+import App from './App'
 
 
 const initialState: Partial<State> = {
@@ -36,13 +36,7 @@ export default class Root extends React.Component {
 		return (
 			<Provider store={store}>
 				<ConnectedRouter history={history}>
-					{module.hot ? (
-						<AppContainer>
-							{this.props.children as React.ReactElement<any>}
-						</AppContainer>
-					) : (
-						this.props.children
-					)}
+					<App />
 				</ConnectedRouter>
 			</Provider>
 		)

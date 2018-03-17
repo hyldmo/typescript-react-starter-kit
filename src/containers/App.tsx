@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { hot } from 'react-hot-loader'
 import { connect } from 'react-redux'
 import { returntypeof } from 'react-redux-typescript'
 import { Route, Switch } from 'react-router'
@@ -34,7 +35,7 @@ const App: React.StatelessComponent<Props> = () => (
 	</div>
 )
 
-export default connect(
+export default hot(module)(connect(
 	mapStateToProps,
 	dispatchToProps
-)(App)
+)(App))

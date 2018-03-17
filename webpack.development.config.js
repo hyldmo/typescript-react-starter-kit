@@ -4,15 +4,6 @@ const CONFIG = require('./webpack.config');
 const webpack = require('webpack');
 
 module.exports = Object.assign(CONFIG, {
-    entry: {
-        hmr: 'react-hot-loader/patch',
-        app: CONFIG.entry,
-    },
-
-    output: Object.assign(CONFIG.output, {
-        publicPath: `http://localhost:${CONFIG.devServer.port}/`,
-    }),
-
     devtool: 'cheap-eval-source-map',
 
     devServer: {
@@ -27,7 +18,7 @@ module.exports = Object.assign(CONFIG, {
         rules: [
             {
                 test: /\.tsx?$/,
-                loaders: ['react-hot-loader/webpack', 'awesome-typescript-loader'],
+                loaders: ['awesome-typescript-loader'],
             },
             {
 
