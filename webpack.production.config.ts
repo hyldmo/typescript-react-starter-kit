@@ -1,29 +1,17 @@
 const CONFIG = require('./webpack.config.ts')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const webpack = require('webpack')
 
+CONFIG.module.rules[1].use.unshift(MiniCssExtractPlugin.loader)
+
 module.exports = Object.assign(CONFIG, {
+	mode: 'production',
 	devtool: 'source-map',
-
-	module: {
-		rules: [
-			{
-				test: /\.tsx?$/,
-				loader: 'awesome-typescript-loader'
-			},
-			{
-				test: /\.pcss$/,
-				exclude: ['node_modules'],
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: CONFIG.module.rules
-				})
-			}
-		]
-	},
-
 	plugins: [
-		new ExtractTextPlugin('styles.css'),
+		new MiniCssExtractPlugin({
+			filename: '[name].css',
+			chunkFilename: '[id].css'
+	  	}),
 		...CONFIG.plugins
 	]
 })
