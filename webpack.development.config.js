@@ -7,20 +7,20 @@ module.exports = Object.assign(CONFIG, {
     entry: {
         hmr: 'react-hot-loader/patch',
         app: CONFIG.entry,
-        vendor: ['react', 'react-dom'],
     },
 
     output: Object.assign(CONFIG.output, {
         publicPath: `http://localhost:${CONFIG.devServer.port}/`,
     }),
 
-    devtool: 'eval-source-map',
+    devtool: 'cheap-eval-source-map',
 
     devServer: {
         historyApiFallback: true,
         port: CONFIG.devServer.port,
         hotOnly: true,
-        overlay: true
+        overlay: true,
+        stats: CONFIG.stats
     },
 
     module: {
@@ -50,6 +50,12 @@ module.exports = Object.assign(CONFIG, {
         ...CONFIG.plugins,
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
+            minChunks: module => module.context && module.context.includes("node_modules")
+        }),
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'manifest',
+            minChucks: Infinity
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()

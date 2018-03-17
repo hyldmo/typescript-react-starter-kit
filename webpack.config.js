@@ -60,9 +60,21 @@ module.exports = {
             'process.env.PACKAGE_VERSION': JSON.stringify(packageJSON.version)
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({ 
+        new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
             parallel: true
         })
-    ]
+    ],
+
+    stats: {
+        assets: true,
+        children: false,
+        chunks: false,
+        hash: false,
+        modules: false,
+        publicPath: false,
+        timings: false,
+        version: false,
+        warnings: true,
+    }
 };
