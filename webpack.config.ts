@@ -17,7 +17,7 @@ module.exports = {
 	devServer: { port },
 
 	resolve: {
-		extensions: ['.ts', '.tsx', '.js', '.pcss', '.css']
+		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
 	},
 
 	module: {
@@ -27,8 +27,8 @@ module.exports = {
 				loaders: ['ts-loader']
 			},
 			{
-				test: /\.pcss$/,
-				use: ['css-loader', 'postcss-loader'].map(loader => ({
+				test: /\.scss$/,
+				use: ['css-loader', 'sass-loader'].map(loader => ({
 					loader,
 					options: { sourceMap: true }
 				}))
@@ -65,7 +65,7 @@ module.exports = {
 		}
 	},
 
-	stats: {
+stats: {
 		assets: true,
 		children: false,
 		chunks: false,

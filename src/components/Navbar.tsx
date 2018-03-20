@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 
-import '../styles/navbar.pcss'
+import '../styles/navbar.scss'
 
 const Navbar: React.StatelessComponent = () => {
 	return (
