@@ -1,5 +1,5 @@
-@import "normalize.css";
-@import "./variables.pcss";
+@import "~normalize.css";
+@import "./variables.scss";
 
 * {
     box-sizing: border-box;
@@ -18,11 +18,11 @@ html, body, #root {
                          "left main   right"
                          "left footer right";
 
-    grid-template-rows: var(--header-height) 1fr 4rem;
-    grid-template-columns: var(--grid-columns);
+    grid-template-rows: $header-height 1fr 4rem;
+    grid-template-columns: $grid-columns;
 }
 
-@media (--medium) {
+@media (max-width: $max-width) {
     #root > div, header {
         grid-template-columns: 0 auto 0;
     }
@@ -35,7 +35,6 @@ main {
 footer {
     grid-area: footer;
 }
-
 
 nav, main, footer {
     padding: 0 20px;
