@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import './styles/main.pcss'
+import './styles/main.scss'
 
 import Root from './containers/Root'
 
