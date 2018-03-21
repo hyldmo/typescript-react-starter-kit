@@ -18,10 +18,10 @@ const middlewares = [sagaMiddleware, routerMiddleware(history)]
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-export default function configureStore (initialState: State) {
+export default function configureStore (initialState?: State) {
 	const store = createStore<State>(
 		rootReducer,
-		initialState,
+		initialState || {} as State,
 		composeEnhancers(
 			applyMiddleware(...middlewares)
 		)
