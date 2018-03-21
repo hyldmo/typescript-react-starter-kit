@@ -3,21 +3,21 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import RedBox from 'redbox-react'
 import configureStore, { history } from '../configureStore'
-import { State } from '../reducers'
+import { State as ReduxState } from '../reducers'
 import App from './App'
 
 
-const initialState: Partial<State> = {
+const initialState: Partial<ReduxState> = {
 
 }
 
-const store = configureStore(initialState as State)
+const store = configureStore(initialState as ReduxState)
 
-export default class Root extends React.Component {
-	state = {
-		error: null
-	}
+type State = {
+	error: Error | null
+}
 
+export default class Root extends React.Component<{}, State> {
 	componentWillReceiveProps () {
 		this.setState({ error: null })
 	}
@@ -29,7 +29,7 @@ export default class Root extends React.Component {
 
 	render () {
 		const { error } = this.state
-		if (error !== null && process.env.NODE_ENV !== 'test') {
+		if (error && process.env.NODE_ENV !== 'test') {
 			// You can render any custom fallback UI
 			return <RedBox error={error} />
 		}
