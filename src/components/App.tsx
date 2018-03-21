@@ -6,7 +6,7 @@ import Home from '../components/Home'
 import Navbar from '../components/Navbar'
 import NotFound from '../components/NotFound'
 
-import Version from './Version'
+import Version from '../containers/Version'
 
 const App: React.StatelessComponent = () => (
 	<div>
