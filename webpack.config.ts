@@ -26,7 +26,7 @@ export const CONFIG: webpack.Configuration = {
 			},
 			{
 				test: /\.scss$/,
-				use: ['css-loader', 'sass-loader'].map(loader => ({
+				use: ['css-loader', 'postcss-loader', 'sass-loader'].map(loader => ({
 					loader,
 					options: { sourceMap: true }
 				}))
