@@ -5,6 +5,7 @@ script:
   - npm run lint
   - npm run stylelint
   - npm test
+  - npm run compileConf:dev
   - npm run prod
 
 notifications:

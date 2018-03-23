@@ -62,7 +62,7 @@ export const CONFIG: webpack.Configuration = {
 		}
 	},
 
-stats: {
+	stats: {
 		assets: true,
 		children: false,
 		chunks: false,
