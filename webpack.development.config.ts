@@ -1,15 +1,16 @@
-﻿const CONFIG = require('./webpack.config.ts')
-const webpack = require('webpack')
+﻿import * as webpack from 'webpack'
+import { CONFIG, PORT } from './webpack.config'
 
-CONFIG.module.rules[1].use.unshift('style-loader')
+(CONFIG.module.rules[1] as any).use.unshift('style-loader')
 
-module.exports = Object.assign(CONFIG, {
+const config: webpack.Configuration = {
+	...CONFIG,
 	mode: 'development',
 	devtool: 'cheap-eval-source-map',
 
 	devServer: {
 		historyApiFallback: true,
-		port: CONFIG.devServer.port,
+		port: PORT,
 		hot: true,
 		overlay: true,
 		stats: CONFIG.stats
@@ -19,4 +20,6 @@ module.exports = Object.assign(CONFIG, {
 		...CONFIG.plugins,
 		new webpack.HotModuleReplacementPlugin()
 	]
-})
+}
+
+module.exports = config

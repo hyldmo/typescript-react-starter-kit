@@ -1,20 +1,18 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as path from 'path'
+import * as webpack from 'webpack'
 
 const packageJSON = require('./package.json')
 
-const port = process.env.PORT || 1337
+export const PORT = process.env.PORT || 1337
 
-module.exports = {
+export const CONFIG: webpack.Configuration = {
 	entry: './src/index.tsx',
 
 	output: {
 		path: path.join(__dirname, 'dist'),
 		filename: '[name]-[hash].js'
 	},
-
-	devServer: { port },
 
 	resolve: {
 		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
@@ -48,8 +46,7 @@ module.exports = {
 		new webpack.DefinePlugin({
 			'process.env.PACKAGE_NAME': JSON.stringify(packageJSON.name),
 			'process.env.PACKAGE_VERSION': JSON.stringify(packageJSON.version)
-		}),
-		new webpack.optimize.OccurrenceOrderPlugin()
+		})
 	],
 
 	optimization: {
@@ -65,7 +62,7 @@ module.exports = {
 		}
 	},
 
-stats: {
+	stats: {
 		assets: true,
 		children: false,
 		chunks: false,
