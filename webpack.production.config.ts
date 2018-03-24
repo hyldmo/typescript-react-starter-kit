@@ -1,11 +1,11 @@
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import * as webpack from 'webpack'
-import { CONFIG, PORT } from './webpack.config'
+import baseConfig from './webpack.config'
 
-(CONFIG.module.rules[1] as any).use.unshift(MiniCssExtractPlugin.loader)
+(baseConfig.module.rules[1] as any).use.unshift(MiniCssExtractPlugin.loader)
 
 const config: webpack.Configuration = {
-	...CONFIG,
+	...baseConfig,
 	mode: 'production',
 	devtool: 'source-map',
 	plugins: [
@@ -13,7 +13,7 @@ const config: webpack.Configuration = {
 			filename: '[name].css',
 			chunkFilename: '[id].css'
 	  	}),
-		...CONFIG.plugins
+		...baseConfig.plugins
 	]
 }
 

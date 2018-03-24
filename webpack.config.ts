@@ -4,9 +4,7 @@ import * as webpack from 'webpack'
 
 const packageJSON = require('./package.json')
 
-export const PORT = process.env.PORT || 1337
-
-export const CONFIG: webpack.Configuration = {
+const config: webpack.Configuration = {
 	entry: './src/index.tsx',
 
 	output: {
@@ -74,3 +72,5 @@ export const CONFIG: webpack.Configuration = {
 		warnings: true
 	}
 }
+
+export default config
