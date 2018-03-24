@@ -1,4 +1,4 @@
-# Typescript React Starter Kit [![Build Status](https://travis-ci.org/eivhyl/typescript-react-starter-kit.svg?branch=master)](https://travis-ci.org/eivhyl/typescript-react-scripts) [![dependencies Status](https://david-dm.org/eivhyl/typescript-react-scripts/status.svg)](https://david-dm.org/eivhyl/typescript-react-scripts)
+# Typescript React Starter Kit [![Build Status](https://travis-ci.org/eivhyl/typescript-react-starter-kit.svg?branch=master)](https://travis-ci.org/eivhyl/typescript-react-starter-kit) [![dependencies Status](https://david-dm.org/eivhyl/typescript-react-starter-kit/status.svg)](https://david-dm.org/eivhyl/typescript-react-starter-kit)
 
 ## Features
 - Typescript for type-checking
