@@ -9,7 +9,7 @@ import NotFound from '../components/NotFound'
 import Version from '../containers/Version'
 
 const App: React.StatelessComponent = () => (
-	<div>
+	<>
 		<Navbar/>
 		<main>
 			<Switch>
@@ -19,7 +19,7 @@ const App: React.StatelessComponent = () => (
 			</Switch>
 		</main>
 		<Footer />
-	</div>
+	</>
 )
 
 export default hot(module)(App)
