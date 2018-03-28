@@ -2,40 +2,38 @@
 @import "./variables.scss";
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 html, body, #root {
-    height: 100%;
-    overflow-y: overlay;
+	height: 100%;
+	overflow-y: overlay;
 }
 
 #root > div {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-areas: "nav  nav   nav"
-                         "left main   right"
-                         "left footer right";
+	display: grid;
+	width: 100%;
+	height: 100%;
+	grid-template-areas:
+		"nav  nav    nav"
+		"left main   right"
+		"left footer right";
+	grid-template-rows: $header-height 1fr 4rem;
+	grid-template-columns: $grid-columns;
 
-    grid-template-rows: $header-height 1fr 4rem;
-    grid-template-columns: $grid-columns;
-}
-
-@media (max-width: $max-width) {
-    #root > div, header {
-        grid-template-columns: 0 auto 0;
-    }
+	@include tablet {
+		grid-template-columns: 0 100% 0;
+	}
 }
 
 main {
-    grid-area: main;
+	grid-area: main;
 }
 
 footer {
-    grid-area: footer;
+	grid-area: footer;
 }
 
 nav, main, footer {
-    padding: 0 20px;
+	padding: 0 20px;
 }
