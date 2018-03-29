@@ -21,4 +21,4 @@
 - Stylelint for linting SCSS/CSS
 - Travis for CI
 
-To get started, run `npm i` or `yarn` to fetch dependencies and `npm run dev` or `yarn dev` to start the development server 
+To get started, run `npm i` or `yarn` to fetch dependencies and `npm run dev` or `yarn dev` to start the development server

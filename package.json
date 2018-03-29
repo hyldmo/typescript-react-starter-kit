@@ -8,7 +8,6 @@
         "test": "jest",
         "test:cover": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "lint": "tslint {__tests__,src}/**/*.{ts,tsx} webpack.*.ts",
-        "lint:fix": "npm run lint -- --fix",
         "stylelint": "stylelint src/**/*.scss --syntax scss",
         "compileConf:dev": "tsc webpack.development.config.ts --lib es6,dom",
         "compileConf:prod": "tsc webpack.production.config.ts --lib es6,dom",
