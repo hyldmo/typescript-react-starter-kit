@@ -10,7 +10,8 @@
         "lint:fix": "npm run lint -- --fix",
         "stylelint": "stylelint src/**/*.scss --syntax scss",
         "compileConf:dev": "tsc webpack.development.config.ts --lib es6,dom",
-        "compileConf:prod": "tsc webpack.production.config.ts --lib es6,dom"
+        "compileConf:prod": "tsc webpack.production.config.ts --lib es6,dom",
+        "stats": "npm run compileConf:prod && webpack --config webpack.production.config.js --profile --json > compilation-stats.json"
     },
     "pre-commit": [
         "stylelint",
