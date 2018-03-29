@@ -1,6 +1,11 @@
-# Typescript React Starter Kit  [![Build Status](https://travis-ci.org/eivhyl/typescript-react-starter-kit.svg?branch=master)](https://travis-ci.org/eivhyl/typescript-react-starter-kit) [![dependencies Status](https://david-dm.org/eivhyl/typescript-react-starter-kit/status.svg)](https://david-dm.org/eivhyl/typescript-react-starter-kit) [![NSP Status](https://nodesecurity.io/orgs/github-oss/projects/09375e0b-a362-4f49-81d3-fa2c685255ba/badge)](https://nodesecurity.io/orgs/github-oss/projects/09375e0b-a362-4f49-81d3-fa2c685255ba)
+# Typescript React Starter Kit #
+[![Build Status](https://travis-ci.org/eivhyl/typescript-react-starter-kit.svg?branch=master)](https://travis-ci.org/eivhyl/typescript-react-starter-kit)
+[![dependencies Status](https://david-dm.org/eivhyl/typescript-react-starter-kit/status.svg)](https://david-dm.org/eivhyl/typescript-react-starter-kit)
+[![Known Vulnerabilities](https://snyk.io/test/github/eivhyl/typescript-react-starter-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/eivhyl/typescript-react-starter-kit?targetFile=package.json)
+[![NSP Status](https://nodesecurity.io/orgs/github-oss/projects/09375e0b-a362-4f49-81d3-fa2c685255ba/badge)](https://nodesecurity.io/orgs/github-oss/projects/09375e0b-a362-4f49-81d3-fa2c685255ba)
+----
 
-## Features
+## Features ##
 - Typescript for type-checking
 - TSLint to ensure consistent style
 - React
