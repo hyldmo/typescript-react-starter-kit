@@ -13,11 +13,13 @@
         ],
         "curly": false,
         "eofline": true,
-        "indent": [
-            true,
-            "tabs",
-            4
-        ],
+        "indent": [true, "tabs"],
+        "ter-indent": [true, "tab", {
+            "SwitchCase": 1,
+            "MemberExpression": 1,
+            "ArrayExpression": 1,
+            "ObjectExpression": 1
+        }],
         "interface-name": [false],
         "interface-over-type-literal": false,
         "max-line-length": [true, 180],

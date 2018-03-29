@@ -12,7 +12,7 @@ const config: webpack.Configuration = {
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
 			chunkFilename: '[id].css'
-	  	}),
+		}),
 		...baseConfig.plugins
 	]
 }
