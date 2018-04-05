@@ -2,8 +2,6 @@
 	"compilerOptions": {
 		"outDir": "./dist/",
 		"sourceMap": true,
-		"allowJs": true,
-		"checkJs": true,
 		"strict": true,
 		"strictFunctionTypes": false, //blocked by https://github.com/Microsoft/TypeScript/issues/12400
 		"noUnusedLocals": true,
