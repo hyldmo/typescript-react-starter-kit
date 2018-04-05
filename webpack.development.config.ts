@@ -11,15 +11,9 @@ const config: webpack.Configuration = {
 	devServer: {
 		historyApiFallback: true,
 		port: process.env.PORT || 1337,
-		hot: true,
 		overlay: true,
 		stats: baseConfig.stats
-	},
-
-	plugins: [
-		...baseConfig.plugins,
-		new webpack.HotModuleReplacementPlugin()
-	]
+	}
 }
 
 module.exports = config

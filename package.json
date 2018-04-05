@@ -3,7 +3,7 @@
     "repository": "https://github.com/eivhyl/typescript-react-starter-kit",
     "version": "1.0.0",
     "scripts": {
-        "dev": "npm run compileConf:dev && webpack-dev-server --config webpack.development.config.js --progress --colors",
+        "dev": "npm run compileConf:dev && webpack-dev-server --config webpack.development.config.js --progress --colors --hot",
         "prod": "npm run compileConf:prod && webpack --config webpack.production.config.js --progress --colors",
         "test": "jest",
         "test:cover": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
