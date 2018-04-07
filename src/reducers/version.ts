@@ -8,4 +8,3 @@ export default function version (state: string = '', action: Action) {
 			return state
 	}
 }
-
