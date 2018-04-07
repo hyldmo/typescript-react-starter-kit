@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom'
 
 import './styles/main.scss'
 
-import Root from './containers/Root'
+import Root from './components/App'
 
 ReactDOM.render(
 	<Root />,

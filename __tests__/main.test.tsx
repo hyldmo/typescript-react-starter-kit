@@ -3,11 +3,11 @@ import * as renderer from 'react-test-renderer'
 
 import '../__mocks__'
 
-import Root from '../src/containers/Root'
+import App from '../src/components/App'
 
 it('renders correctly', () => {
 	renderer
-		.create(<Root />)
+		.create(<App />)
 		.toJSON()
 	// TODO (Optional): Turn on snapshot testing
 	// expect(tree).toMatchSnapshot()

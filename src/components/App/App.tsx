@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router'
-import Footer from '../components/Footer'
-import Home from '../components/Home'
-import Navbar from '../components/Navbar'
-import NotFound from '../components/NotFound'
+import Footer from '../Footer'
+import Home from '../Home'
+import Navbar from '../Navbar'
+import NotFound from '../NotFound'
 
-import Version from '../containers/Version'
+import Version from '../Version'
 
 const App: React.StatelessComponent = () => (
 	<>
