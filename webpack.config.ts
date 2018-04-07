@@ -13,6 +13,9 @@ const config: webpack.Configuration = {
 	},
 
 	resolve: {
+		alias: {
+			styles: path.resolve(__dirname, 'src/styles')
+		},
 		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
 	},
 
