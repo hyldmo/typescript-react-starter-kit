@@ -2,8 +2,8 @@ import * as React from 'react'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import RedBox from 'redbox-react'
-import App from '../components/App'
-import configureStore, { history } from '../configureStore'
+import configureStore, { history } from '../../configureStore'
+import App from './App'
 
 const store = configureStore()
 

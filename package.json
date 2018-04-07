@@ -91,6 +91,7 @@
         "tslint": "^5.6.0",
         "tslint-eslint-rules": "^4.1.1",
         "typescript": "^2.7.2",
+        "typings-for-css-modules-loader": "^1.7.0",
         "webpack": "^4.1.1",
         "webpack-cli": "^2.0.12",
         "webpack-dev-server": "^3.1.1"
