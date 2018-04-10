@@ -17,7 +17,7 @@ type Props = typeof stateProps & typeof dispatchToProps
 
 class Version extends React.Component<Props> {
 	componentDidMount () {
-		this.props.fetchVersion('https://raw.githubusercontent.com/eivhyl/typescript-react-starter-kit/master/package.json')
+		this.props.fetchVersion('https://raw.githubusercontent.com/hyldmo/typescript-react-starter-kit/master/package.json')
 	}
 
 	render () {
