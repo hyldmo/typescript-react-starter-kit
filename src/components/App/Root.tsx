@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { hot } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import RedBox from 'redbox-react'
@@ -11,7 +12,7 @@ type State = {
 	error: Error | null
 }
 
-export default class Root extends React.Component<{}, State> {
+class Root extends React.Component<{}, State> {
 	state = {
 		error: null
 	}
@@ -38,3 +39,5 @@ export default class Root extends React.Component<{}, State> {
 		)
 	}
 }
+
+export default hot(module)(Root)

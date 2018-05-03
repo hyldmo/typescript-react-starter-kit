@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router'
 import Footer from '../Footer'
 import Home from '../Home'
@@ -22,4 +21,4 @@ const App: React.StatelessComponent = () => (
 	</>
 )
 
-export default hot(module)(App)
+export default App

@@ -1,7 +1,7 @@
 {
     "name": "typescript-react-starter-kit",
     "repository": "https://github.com/hyldmo/typescript-react-starter-kit",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "scripts": {
         "dev": "npm run compileConf:dev && webpack-dev-server --config webpack.development.config.js --progress --colors --hot",
         "prod": "npm run compileConf:prod && webpack --config webpack.production.config.js --progress --colors",
@@ -13,11 +13,6 @@
         "compileConf:prod": "tsc webpack.production.config.ts --lib es6,dom",
         "stats": "npm run compileConf:prod && webpack --config webpack.production.config.js --profile --json > compilation-stats.json"
     },
-    "pre-commit": [
-        "stylelint",
-        "lint",
-        "test"
-    ],
     "jest": {
         "transform": {
             ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
@@ -45,8 +40,8 @@
     "dependencies": {
         "history": "^4.6.3",
         "normalize.css": "^8.0.0",
-        "react": "^16.1.1",
-        "react-dom": "^16.1.1",
+        "react": "^16.3.2",
+        "react-dom": "^16.3.2",
         "react-redux": "^5.0.6",
         "react-router": "^4.2.0",
         "react-router-dom": "^4.2.2",
@@ -60,7 +55,6 @@
         "@types/node": "^8.0.0",
         "@types/react": "16.1.0",
         "@types/react-dom": "16.0.4",
-        "@types/react-hot-loader": "^3.0.6",
         "@types/react-redux": "^5.0.13",
         "@types/react-router": "^4.0.18",
         "@types/react-router-dom": "^4.2.2",
@@ -84,6 +78,7 @@
         "sass-loader": "^6.0.7",
         "style-loader": "^0.20.3",
         "stylelint": "^9.1.3",
+        "stylelint-config-recommended": "^2.1.0",
         "stylelint-config-recommended-scss": "^3.1.0",
         "stylelint-scss": "^2.5.0",
         "ts-jest": "^22.4.2",
