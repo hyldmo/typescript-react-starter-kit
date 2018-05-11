@@ -1,8 +1,10 @@
-import * as HtmlWebpackPlugin from 'html-webpack-plugin'
-import * as path from 'path'
-import * as webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import path from 'path'
+import webpack from 'webpack'
 
 const packageJSON = require('./package.json')
+
+const srcResolve = (dir: string) => path.join(__dirname, 'src', dir)
 
 const config: webpack.Configuration = {
 	entry: './src/index.tsx',
@@ -14,7 +16,10 @@ const config: webpack.Configuration = {
 
 	resolve: {
 		alias: {
-			styles: path.resolve(__dirname, 'src/styles')
+			actions: srcResolve('actions'),
+			components: srcResolve('components'),
+			reducers: srcResolve('reducers'),
+			styles: srcResolve('styles')
 		},
 		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
 	},

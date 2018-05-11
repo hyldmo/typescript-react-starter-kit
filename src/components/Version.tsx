@@ -1,8 +1,8 @@
-import * as React from 'react'
+import { Actions } from 'actions'
+import React from 'react'
 import { connect } from 'react-redux'
 import { returntypeof } from 'react-redux-typescript'
-import { Actions } from '../actions'
-import { State } from '../reducers'
+import { State } from 'reducers'
 
 const mapStateToProps = (state: State) => ({
 	version: state.version
