@@ -2,12 +2,8 @@ import createHistory from 'history/createBrowserHistory'
 import { routerMiddleware } from 'react-router-redux'
 import { applyMiddleware, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-
 import rootReducer, { State } from './reducers'
 import SagaManager from './sagas/SagaManager'
-
-// Allow require to be used in TS file
-declare function require (name: string): any
 
 const __DEV__ = process.env.NODE_ENV === 'development'
 
@@ -16,12 +12,12 @@ const sagaMiddleware = createSagaMiddleware()
 export const history = createHistory()
 const middlewares = [sagaMiddleware, routerMiddleware(history)]
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnhancers: typeof compose = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-export default function configureStore (initialState?: State) {
-	const store = createStore<State>(
+export default function configureStore (initialState?: Partial<State>) {
+	const store = createStore(
 		rootReducer,
-		initialState || {} as State,
+		initialState || {},
 		composeEnhancers(
 			applyMiddleware(...middlewares)
 		)
