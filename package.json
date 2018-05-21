@@ -1,7 +1,7 @@
 {
     "name": "typescript-react-starter-kit",
     "repository": "https://github.com/hyldmo/typescript-react-starter-kit",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "scripts": {
         "dev": "npm run compileConf:dev && webpack-dev-server --config webpack.development.config.js --progress --colors --hot",
         "prod": "npm run compileConf:prod && webpack --config webpack.production.config.js --progress --colors",
