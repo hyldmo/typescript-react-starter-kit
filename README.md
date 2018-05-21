@@ -1,6 +1,7 @@
 # Typescript React Starter Kit #
 [![Build Status](https://travis-ci.org/hyldmo/typescript-react-starter-kit.svg?branch=master)](https://travis-ci.org/hyldmo/typescript-react-starter-kit)
 [![Coverage Status](https://coveralls.io/repos/github/hyldmo/typescript-react-starter-kit/badge.svg?branch=master)](https://coveralls.io/github/hyldmo/typescript-react-starter-kit?branch=master)
+[![Greenkeeper badge](https://badges.greenkeeper.io/hyldmo/typescript-react-starter-kit.svg)](https://greenkeeper.io/)
 [![dependencies Status](https://david-dm.org/hyldmo/typescript-react-starter-kit/status.svg)](https://david-dm.org/hyldmo/typescript-react-starter-kit)
 [![devDependencies Status](https://david-dm.org/hyldmo/typescript-react-starter-kit/dev-status.svg)](https://david-dm.org/hyldmo/typescript-react-starter-kit?type=dev)
 [![Known Vulnerabilities](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit?targetFile=package.json)
