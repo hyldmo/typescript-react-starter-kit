@@ -9,8 +9,8 @@
         "test:cover": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
         "lint": "tslint {__tests__,src}/**/*.{ts,tsx} webpack.*.ts",
         "stylelint": "stylelint src/**/*.scss --syntax scss",
-        "compileConf:dev": "tsc webpack.development.config.ts --lib es6,dom",
-        "compileConf:prod": "tsc webpack.production.config.ts --lib es6,dom",
+        "compileConf:dev": "tsc webpack.development.config.ts --lib es6,dom --esModuleInterop",
+        "compileConf:prod": "tsc webpack.production.config.ts --lib es6,dom --esModuleInterop",
         "stats": "npm run compileConf:prod && webpack --config webpack.production.config.js --profile --json > compilation-stats.json"
     },
     "jest": {
@@ -25,6 +25,7 @@
             "json",
             "scss"
         ],
+        "modulePaths": ["src"],
         "moduleNameMapper": {
             "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.ts",
             "\\.(css|scss|pcss)$": "<rootDir>/__mocks__/styleMock.ts"
@@ -87,8 +88,8 @@
         "tslint-eslint-rules": "^5.1.0",
         "typescript": "^2.7.2",
         "typings-for-css-modules-loader": "^1.7.0",
-        "webpack": "^4.1.1",
-        "webpack-cli": "^2.0.12",
-        "webpack-dev-server": "^3.1.1"
+        "webpack": "^4.8.1",
+        "webpack-cli": "^2.1.3",
+        "webpack-dev-server": "^3.1.4"
     }
 }

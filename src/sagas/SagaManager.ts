@@ -5,7 +5,7 @@ import { Store } from 'redux'
 import { SagaMiddleware } from 'redux-saga'
 import { cancel, fork, take } from 'redux-saga/effects'
 
-import { State } from '../reducers'
+import { State } from 'reducers'
 import demoSaga from './version'
 
 const sagas = [demoSaga]
