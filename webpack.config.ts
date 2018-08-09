@@ -1,8 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
-
-const packageJSON = require('./package.json')
+import packageJSON from './package.json'
 
 const srcResolve = (dir: string) => path.join(__dirname, 'src', dir)
 
