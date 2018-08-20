@@ -8,7 +8,7 @@ script:
   - yarn lint
   - yarn stylelint
   - yarn test:cover
-  - yarn compileConf:dev
+  - yarn webpack --config webpack.development.config.ts
   - yarn prod
 
 notifications:
