@@ -3,15 +3,13 @@
     "repository": "https://github.com/hyldmo/typescript-react-starter-kit",
     "version": "1.1.0",
     "scripts": {
-        "dev": "npm run compileConf:dev && webpack-dev-server --config webpack.development.config.js --progress --colors --hot",
-        "prod": "npm run compileConf:prod && webpack --config webpack.production.config.js --progress --colors",
+        "dev": "webpack-dev-server --config webpack.development.config.ts --progress --colors --hot",
+        "prod": "webpack --config webpack.production.config.ts --progress --colors",
         "test": "jest",
         "test:cover": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-        "lint": "tslint {__tests__,src}/**/*.{ts,tsx} webpack.*.ts",
+        "lint": "tslint {__tests__,src}/**/*.{ts,tsx} webpack.*.ts --exclude src/**/*.d.ts",
         "stylelint": "stylelint src/**/*.scss --syntax scss",
-        "compileConf:dev": "tsc webpack.development.config.ts --lib es6,dom --esModuleInterop",
-        "compileConf:prod": "tsc webpack.production.config.ts --lib es6,dom --esModuleInterop",
-        "stats": "npm run compileConf:prod && webpack --config webpack.production.config.js --profile --json > compilation-stats.json"
+        "stats": "webpack --config webpack.production.config.ts --profile --json > compilation-stats.json"
     },
     "jest": {
         "transform": {
@@ -25,7 +23,9 @@
             "json",
             "scss"
         ],
-        "modulePaths": ["src"],
+        "modulePaths": [
+            "src"
+        ],
         "moduleNameMapper": {
             "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.ts",
             "\\.(css|scss|pcss)$": "<rootDir>/__mocks__/styleMock.ts"
@@ -52,44 +52,51 @@
     },
     "devDependencies": {
         "@types/history": "^4.6.0",
+        "@types/html-webpack-plugin": "^3.2.0",
         "@types/jest": "^23.0.0",
+        "@types/mini-css-extract-plugin": "0.2.0",
         "@types/node": "^10.1.3",
-        "@types/react": "16.3.14",
-        "@types/react-dom": "16.0.6",
+        "@types/react": "16.4.8",
+        "@types/react-dom": "16.0.7",
         "@types/react-redux": "^6.0.1",
         "@types/react-router": "^4.0.18",
         "@types/react-router-dom": "^4.2.2",
         "@types/react-router-redux": "^5.0.10",
         "@types/react-test-renderer": "^16.0.0",
         "@types/redux-actions": "^2.2.3",
-        "@types/webpack": "^4.1.2",
+        "@types/webpack": "^4.4.9",
+        "@types/webpack-dev-server": "^2.9.5",
         "@types/webpack-env": "^1.13.5",
         "coveralls": "^3.0.0",
         "css-loader": "^1.0.0",
         "html-webpack-plugin": "^3.0.6",
-        "jest": "^22.4.3",
+        "jest": "^23.5.0",
         "mini-css-extract-plugin": "^0.4.0",
         "node-sass": "^4.7.2",
-        "postcss": "^6.0.6",
-        "postcss-loader": "^2.1.3",
-        "react-hot-loader": "4.3.3",
+        "postcss": "^7.0.0",
+        "postcss-loader": "^3.0.0",
+        "react-hot-loader": "^4.3.4",
         "react-redux-typescript": "^2.3.0",
         "react-test-renderer": "16.4.1",
         "redbox-react": "^1.5.0",
         "sass-loader": "^7.0.1",
-        "style-loader": "^0.21.0",
+        "style-loader": "^0.22.0",
         "stylelint": "^9.1.3",
         "stylelint-config-recommended": "^2.1.0",
         "stylelint-config-recommended-scss": "^3.1.0",
         "stylelint-scss": "^3.1.0",
         "ts-jest": "^23.0.0",
         "ts-loader": "^4.1.0",
+        "ts-node": "^7.0.0",
         "tslint": "^5.6.0",
         "tslint-eslint-rules": "^5.1.0",
-        "typescript": "^2.7.2",
+        "typescript": "^3.0.1",
         "typings-for-css-modules-loader": "^1.7.0",
         "webpack": "^4.8.1",
         "webpack-cli": "^3.0.0",
         "webpack-dev-server": "^3.1.4"
+    },
+    "resolutions": {
+        "@types/react": "16.4.8"
     }
 }
