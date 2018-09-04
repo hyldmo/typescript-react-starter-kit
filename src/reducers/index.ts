@@ -1,12 +1,12 @@
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
-import version from './version'
+import sessions from './sessions'
 
 export type State = ReturnType<typeof reducers>
 
 const reducers = combineReducers({
 	routing,
-	version
+	sessions
 })
 
 export default reducers

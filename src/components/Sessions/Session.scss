@@ -1,0 +1,25 @@
+.session {
+
+}
+
+.star {
+	background: none;
+	border: none;
+	outline: none;
+	color: black;
+	padding: 0.25rem;
+	font-size: 1.5rem;
+
+	svg {
+		width: 2rem;
+		height: 2rem;
+		stroke-width: 3px;
+		fill: white;
+		&:hover, &.filled {
+			fill: goldenrod;
+		}
+		&.filled:hover {
+			fill: yellow;
+		}
+	}
+}

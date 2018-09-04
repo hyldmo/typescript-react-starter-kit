@@ -10,7 +10,8 @@ const config: webpack.Configuration = {
 
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: '[name]-[chunkhash].js'
+		publicPath: '/',
+		filename: '[name]-[hash].js'
 	},
 
 	resolve: {
