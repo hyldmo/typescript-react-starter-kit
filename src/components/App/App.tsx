@@ -3,9 +3,11 @@ import Home from 'components/Home'
 import Navbar from 'components/Navbar'
 import NotFound from 'components/NotFound'
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router'
-
 import Sessions, { Session } from '../Sessions'
+
+import './App.scss'
 
 const App: React.StatelessComponent = () => (
 	<>
@@ -22,4 +24,4 @@ const App: React.StatelessComponent = () => (
 	</>
 )
 
-export default App
+export default hot(module)(App)

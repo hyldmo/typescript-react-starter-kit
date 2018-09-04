@@ -31,7 +31,7 @@ class Session extends React.Component<Props> {
 		if (!session) return <h1>Session not found</h1>
 
 		return (
-			<div className="session">
+			<div className={classnames.session}>
 				<h1>{session.title}</h1>
 				<h2>Give feedback</h2>
 				<div>
@@ -47,7 +47,7 @@ class Session extends React.Component<Props> {
 						</button>)
 					)}
 				</div>
-				<textarea onChange={this.onFeedbackEntered} value={feedback} />
+				<textarea rows={5} onChange={this.onFeedbackEntered} value={feedback} />
 				<button>Send</button>
 			</div>
 		)

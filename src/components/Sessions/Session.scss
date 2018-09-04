@@ -1,5 +1,9 @@
 .session {
-
+	textarea {
+		display: block;
+		width: 100%;
+		max-width: 30rem;
+	}
 }
 
 .star {
@@ -19,7 +23,7 @@
 			fill: goldenrod;
 		}
 		&.filled:hover {
-			fill: yellow;
+			fill: orange;
 		}
 	}
 }
