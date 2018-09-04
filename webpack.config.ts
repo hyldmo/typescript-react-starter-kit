@@ -8,11 +8,6 @@ const srcResolve = (dir: string) => path.join(__dirname, 'src', dir)
 const config: webpack.Configuration = {
 	entry: './src/index.tsx',
 
-	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: '[name]-[chunkhash].js'
-	},
-
 	resolve: {
 		alias: {
 			actions: srcResolve('actions'),

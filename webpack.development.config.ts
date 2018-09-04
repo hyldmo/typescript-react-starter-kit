@@ -8,6 +8,11 @@ const config: webpack.Configuration = {
 	mode: 'development',
 	devtool: 'cheap-eval-source-map',
 
+	output: {
+		publicPath: '/',
+		filename: '[name]-[hash].js'
+	},
+
 	devServer: {
 		historyApiFallback: true,
 		port: 1337,
