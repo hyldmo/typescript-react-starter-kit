@@ -76,7 +76,6 @@
         "postcss": "^7.0.0",
         "postcss-loader": "^3.0.0",
         "react-hot-loader": "^4.3.4",
-        "react-redux-typescript": "^2.3.0",
         "react-test-renderer": "16.4.1",
         "redbox-react": "^1.5.0",
         "sass-loader": "^7.0.1",
