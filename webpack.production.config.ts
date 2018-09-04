@@ -1,4 +1,5 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import path from 'path'
 import webpack from 'webpack'
 import baseConfig from './webpack.config'
 
@@ -6,6 +7,12 @@ import baseConfig from './webpack.config'
 
 const config: webpack.Configuration = {
 	...baseConfig,
+
+	output: {
+		path: path.join(__dirname, 'dist'),
+		filename: '[name]-[chunkash].js'
+	},
+
 	mode: 'production',
 	devtool: 'source-map',
 	plugins: [
