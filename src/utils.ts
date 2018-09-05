@@ -24,3 +24,16 @@ export function computeOverallRating (...ratings: number[]): number {
 	const relevant = ratings.filter(rating => rating !== 0)
 	return Math.round(relevant.reduce((a, b) => a + b, 0) / relevant.length)
 }
+
+export const api: typeof fetch = (url, options) => {
+	const headers = options && options.headers ? new Headers(options.headers) : new Headers()
+	headers.append('content-type', 'application/json')
+
+	return fetch(url, {
+		...options,
+		body: options && typeof options.body === 'object'
+			? JSON.stringify(options.body)
+			: options && options.body,
+		headers: new Headers(headers)
+	})
+}

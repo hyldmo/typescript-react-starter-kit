@@ -1,3 +1,5 @@
+import { Omit } from 'react-redux'
+
 export interface Session {
 	/**
 	 *  The ID of the session
@@ -64,4 +66,26 @@ export interface Feedback {
 	content: Rating,
 	quality: Rating,
 	comments?: string
+}
+
+export interface Event {
+	name: string
+	id: string
+	slug: string
+}
+
+export interface FeedbackResult {
+	online: Omit<Feedback, 'comments'> & {count: 0.0}
+	paper: {
+		green: number
+		yellow: number
+		red: number
+	}
+	participants: number
+}
+
+export type FeedbackResponse = {
+	session: FeedbackResult
+	conference: FeedbackResult
+	comments: string[]
 }

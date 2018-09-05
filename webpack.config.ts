@@ -18,6 +18,7 @@ const config: webpack.Configuration = {
 		alias: {
 			actions: srcResolve('actions'),
 			components: srcResolve('components'),
+			consts: srcResolve('consts'),
 			reducers: srcResolve('reducers'),
 			styles: srcResolve('styles'),
 			utils: srcResolve('utils')

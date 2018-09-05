@@ -1,11 +1,13 @@
 import { Actions } from 'actions'
 import StarRating from 'components/StarRating'
+import { CURRENT_JZ } from 'consts'
+import { DEVNULL_URL } from 'consts'
 import React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import { State as ReduxState } from 'reducers'
-import { Feedback } from 'types'
-import { capitalize, computeOverallRating, omit, pick } from 'utils'
+import { Feedback, FeedbackResponse } from 'types'
+import { api, capitalize, computeOverallRating, omit, pick } from 'utils'
 
 import * as classnames from './Session.scss'
 
@@ -21,8 +23,20 @@ class Session extends React.Component<Props, Feedback> {
 		quality: 0,
 		comments: ''
 	}
-	componentDidMount () {
-		this.props.fetchSessions(2018)
+	async componentDidMount () {
+		const { fetchSessions, session, match } = this.props
+		if (!session)
+			fetchSessions(CURRENT_JZ)
+
+		const response = await api(`${DEVNULL_URL}/events/${CURRENT_JZ.id}/sessions/${match.params.id}/feedbacks`, {
+			headers: new Headers({ 'Voter-ID': '1' }) // TODO: Add actual userID
+		})
+		const body: FeedbackResponse = await response.json()
+
+		this.setState({
+			...omit(body.session.online, 'count'),
+			comments: body.comments[0]
+		})
 	}
 
 	onFeedbackEntered: React.ChangeEventHandler<HTMLTextAreaElement> = e => {
@@ -31,14 +45,15 @@ class Session extends React.Component<Props, Feedback> {
 
 	handleStarClick = (n: number, name: keyof State) => {
 		const entry = { [name]: n } as object // TODO: Switch to more specific cast or remove altogether
-
-		console.log(n, entry)
 		this.setState(entry)
 	}
 
 	handleSubmit: React.FormEventHandler<HTMLFormElement> = e => {
 		e.preventDefault()
-		this.props.submitFeedback(this.state)
+		if (!this.props.session)
+			throw new Error('Session not found')
+
+		this.props.submitFeedback(this.state, this.props.session.sessionId)
 	}
 
 	render (): JSX.Element {
@@ -53,7 +68,7 @@ class Session extends React.Component<Props, Feedback> {
 					<tbody>
 					{Object.entries(pick(session, 'speakers', 'language', 'format')).map(([key, value]) => (
 						<tr key={key}>
-							<td>{capitalize(key)}</td>
+							<th>{capitalize(key)}</th>
 							<td>{capitalize(value)}</td>
 						</tr>
 					))}
@@ -89,6 +104,7 @@ const mapStateToProps = (state: ReduxState, ownProps: RouteComponentProps<{ id: 
 
 const dispatchToProps = {
 	fetchSessions: Actions.fetchSessions,
+	fetchFeedback: Actions.fetchFeedback,
 	submitFeedback: Actions.submitFeedback
 }
 

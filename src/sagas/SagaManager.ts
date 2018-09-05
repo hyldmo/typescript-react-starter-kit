@@ -7,8 +7,9 @@ import { cancel, fork, take } from 'redux-saga/effects'
 
 import { State } from 'reducers'
 import sessions from './sessions'
+import feedback from './feedback'
 
-const sagas = [sessions]
+const sagas = [feedback, sessions]
 
 export const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR'
 
