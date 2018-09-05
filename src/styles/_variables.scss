@@ -1,0 +1,28 @@
+// Colors
+$primary-color: #f7ae1a;
+$secondary-color: #212121;
+$banner-bg: #f18732;
+
+$logo-red: #a61e32;
+$logo-red-light: #e94441;
+
+// Screen sizes
+$screen-xxs: 545px;
+$screen-xs: 690px;
+$screen-sm: 850px;
+$screen-md: 1200px;
+$screen-lg: 1520px;
+
+// General
+$pixel-border-size: 3rem;
+$section-margin: 2rem 0 2rem 0;
+$header-height: 3rem;
+$max-width: 60rem;
+
+@mixin grid-columns {
+	grid-template-columns: auto $max-width auto;
+
+	@media all and (max-width: $max-width) {
+		grid-template-columns: 0 100% 0;
+	}
+}

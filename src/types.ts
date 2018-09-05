@@ -1,4 +1,3 @@
-
 export interface Session {
 	/**
 	 *  The ID of the session
@@ -35,7 +34,7 @@ export interface Session {
 	/**
 	 *  A list of speakers for the talk
 	 */
-	speakers: Speaker[]
+	speakers: string
 }
 
 export interface Speaker {
@@ -55,4 +54,14 @@ export interface Speaker {
 	 *  Url to a picture of the speaker
 	 */
 	picture: string
+}
+
+export type Rating = 0 | 1 | 2 | 3 | 4 | 5 | number
+
+export interface Feedback {
+	overall: Rating,
+	relevance: Rating,
+	content: Rating,
+	quality: Rating,
+	comments?: string
 }

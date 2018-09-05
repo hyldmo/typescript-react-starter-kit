@@ -9,28 +9,42 @@ html, body {
 	height: 100%;
 	overflow-y: overlay;
 }
+
 body {
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-family: 'Source Sans Pro', Verdana, Geneva, Tahoma, sans-serif;
 	color: #fff;
-	background-color: $jz-gray;
+	background-color: $secondary-color;
 }
 
 a {
 	color: #fff;
 }
 
-body > div {
-	display: grid;
-	width: 100%;
-	height: 100%;
-	grid-template-areas:
-		"nav  nav    nav"
-		"left main   right"
-		"footer footer footer";
-	grid-template-rows: $header-height 1fr 4rem;
-	grid-template-columns: $grid-columns;
+:global {
+	#root {
+		display: grid;
+		width: 100%;
+		height: 100%;
+		grid-template-areas:
+			"nav  nav    nav"
+			"left main   right"
+			"footer footer footer";
+		grid-template-rows: $header-height 1fr 4rem;
 
-	@include tablet {
-		grid-template-columns: 0 100% 0;
+		@include grid-columns;
+	}
+}
+
+button, .button {
+	cursor: pointer;
+	background: transparent;
+	border: 3px solid white;
+	padding: 0.4rem 0.8rem 0.4rem 0.8rem;
+	color: $primary-color;
+	font-weight: bold;
+	font-size: 20px;
+
+	&:hover {
+		background-color: rgba(white, 0.1)
 	}
 }

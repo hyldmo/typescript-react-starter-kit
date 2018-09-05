@@ -19,7 +19,8 @@ const config: webpack.Configuration = {
 			actions: srcResolve('actions'),
 			components: srcResolve('components'),
 			reducers: srcResolve('reducers'),
-			styles: srcResolve('styles')
+			styles: srcResolve('styles'),
+			utils: srcResolve('utils')
 		},
 		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
 	},

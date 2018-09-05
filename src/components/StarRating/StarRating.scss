@@ -1,0 +1,32 @@
+@import "~styles/_variables.scss";
+
+.star {
+	background: none;
+	border: none;
+	outline: none;
+	color: black;
+	padding: 0.25rem;
+	font-size: 1.5rem;
+
+	input {
+		display: none;
+	}
+
+	svg {
+		width: 2rem;
+		height: 2rem;
+		stroke-width: 3px;
+		fill: white;
+		stroke: black;
+
+		transition: all 0.2s ease-in-out;
+
+		&.filled {
+			fill: $primary-color;
+		}
+
+		&:not(.readonly):hover {
+			stroke: $primary-color;
+		}
+	}
+}

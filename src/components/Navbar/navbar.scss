@@ -1,18 +1,18 @@
-@import "~styles/variables.scss";
+@import "~styles/_variables.scss";
 
 header {
 	grid-area: nav;
-	background-color: $jz-red;
+	background-color: $logo-red;
 
 	display: grid;
-	grid-template-columns: $grid-columns;
+	@include grid-columns;
 
 	nav {
 		grid-column: 2 / 3;
 
 		ul {
 			list-style: none;
-			margin: calc($header-height / 3) 0;
+			margin: $header-height / 3 0;
 			padding: 0;
 
 			li {

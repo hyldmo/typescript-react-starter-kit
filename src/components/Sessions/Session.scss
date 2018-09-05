@@ -1,29 +1,17 @@
+@import "'~styles/_variables.scss";
+
 .session {
 	textarea {
 		display: block;
 		width: 100%;
 		max-width: 30rem;
 	}
-}
 
-.star {
-	background: none;
-	border: none;
-	outline: none;
-	color: black;
-	padding: 0.25rem;
-	font-size: 1.5rem;
+	td {
+		padding: 0.5rem 1rem 0.5rem 0;
+	}
 
-	svg {
-		width: 2rem;
-		height: 2rem;
-		stroke-width: 3px;
-		fill: white;
-		&:hover, &.filled {
-			fill: goldenrod;
-		}
-		&.filled:hover {
-			fill: orange;
-		}
+	button[type="submit"] {
+		margin: 1rem 0;
 	}
 }

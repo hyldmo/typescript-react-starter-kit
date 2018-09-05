@@ -1,4 +1,5 @@
-@import "~styles/variables.scss";
+@import 'styles/main.scss';
+@import "~styles/_variables.scss";
 
 main {
 	grid-area: main;
@@ -6,7 +7,7 @@ main {
 
 footer {
 	grid-area: footer;
-	background-color: $jz-yellow;
+	background-color: $primary-color;
 }
 
 nav, main, footer span {
