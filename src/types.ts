@@ -1,5 +1,9 @@
 import { Omit } from 'react-redux'
 
+import reducers from 'reducers'
+
+export type State = ReturnType<typeof reducers>
+
 export interface Session {
 	/**
 	 *  The ID of the session

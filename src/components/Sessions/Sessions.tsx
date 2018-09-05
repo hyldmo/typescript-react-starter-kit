@@ -3,7 +3,7 @@ import { CURRENT_JZ } from 'consts'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { State } from 'reducers'
+import { State } from 'types'
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 

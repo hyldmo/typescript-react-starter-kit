@@ -1,8 +1,9 @@
 import createHistory from 'history/createBrowserHistory'
 import { routerMiddleware } from 'react-router-redux'
+import rootReducer from 'reducers'
 import { applyMiddleware, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import rootReducer, { State } from './reducers'
+import { State } from 'types'
 import SagaManager from './sagas/SagaManager'
 
 const __DEV__ = process.env.NODE_ENV === 'development'

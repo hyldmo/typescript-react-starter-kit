@@ -1,6 +1,7 @@
 import { Actions } from 'actions'
 import { CURRENT_JZ, DEVNULL_URL } from 'consts'
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, select, takeEvery } from 'redux-saga/effects'
+import { State } from 'types'
 import { api } from 'utils'
 
 export default function* () {
@@ -9,9 +10,10 @@ export default function* () {
 
 function* submitFeedback (action: typeof Actions.submitFeedback) {
 	try {
+		const user: string = yield select<State>(s => s.user)
 		yield call(api, `${DEVNULL_URL}/events/${CURRENT_JZ.id}/sessions/${action.meta}/feedbacks`, {
 			method: 'POST',
-			headers: new Headers({ 'Voter-ID': '1' }), // TODO: Add actual userID
+			headers: new Headers({ 'Voter-ID': user }),
 			body: JSON.stringify(action.payload)
 		})
 		yield put(Actions.submitFeedbackSuccess())

@@ -5,8 +5,7 @@ import { DEVNULL_URL } from 'consts'
 import React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import { State as ReduxState } from 'reducers'
-import { Feedback, FeedbackResponse } from 'types'
+import { Feedback, FeedbackResponse, State as ReduxState } from 'types'
 import { api, capitalize, computeOverallRating, omit, pick } from 'utils'
 
 import * as classnames from './Session.scss'
@@ -24,12 +23,12 @@ class Session extends React.Component<Props, Feedback> {
 		comments: ''
 	}
 	async componentDidMount () {
-		const { fetchSessions, session, match } = this.props
+		const { fetchSessions, session, match, user } = this.props
 		if (!session)
 			fetchSessions(CURRENT_JZ)
 
 		const response = await api(`${DEVNULL_URL}/events/${CURRENT_JZ.id}/sessions/${match.params.id}/feedbacks`, {
-			headers: new Headers({ 'Voter-ID': '1' }) // TODO: Add actual userID
+			headers: new Headers({ 'Voter-ID': user as string })
 		})
 		const body: FeedbackResponse = await response.json()
 
@@ -98,6 +97,7 @@ class Session extends React.Component<Props, Feedback> {
 const mapStateToProps = (state: ReduxState, ownProps: RouteComponentProps<{ id: string }>) => {
 	const { sessions } = state.sessions
 	return {
+		user: state.user,
 		session: sessions && sessions.find(sesh => sesh.sessionId === ownProps.match.params.id)
 	}
 }
