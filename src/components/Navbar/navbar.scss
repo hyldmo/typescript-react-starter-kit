@@ -2,7 +2,7 @@
 
 header {
 	grid-area: nav;
-	border-bottom: 1px solid #e9e9e9;
+	background-color: $jz-red;
 
 	display: grid;
 	grid-template-columns: $grid-columns;

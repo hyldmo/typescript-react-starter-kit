@@ -8,8 +8,15 @@
 html, body {
 	height: 100%;
 	overflow-y: overlay;
+}
+body {
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: #fff;
+	background-color: $jz-gray;
+}
 
-	font-family: Verdana, Geneva, Tahoma, sans-serif
+a {
+	color: #fff;
 }
 
 body > div {
@@ -19,7 +26,7 @@ body > div {
 	grid-template-areas:
 		"nav  nav    nav"
 		"left main   right"
-		"left footer right";
+		"footer footer footer";
 	grid-template-rows: $header-height 1fr 4rem;
 	grid-template-columns: $grid-columns;
 

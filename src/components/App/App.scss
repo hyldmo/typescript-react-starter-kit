@@ -6,8 +6,9 @@ main {
 
 footer {
 	grid-area: footer;
+	background-color: $jz-yellow;
 }
 
-nav, main, footer {
+nav, main, footer span {
 	padding: 0 20px;
 }

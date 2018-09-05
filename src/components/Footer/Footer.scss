@@ -1,0 +1,10 @@
+@import "~styles/variables.scss";
+
+footer {
+	display: grid;
+	grid-template-columns: $grid-columns;
+
+	span {
+		grid-column: 2 / 3;
+	}
+}
