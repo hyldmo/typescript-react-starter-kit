@@ -6,7 +6,7 @@
         "dev": "webpack-dev-server --config webpack.development.config.ts --progress --colors --hot",
         "prod": "webpack --config webpack.production.config.ts --progress --colors",
         "test": "jest",
-        "test:cover": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+        "test:cover": "jest --coverage",
         "lint": "tslint {__tests__,src}/**/*.{ts,tsx} webpack.*.ts --exclude src/**/*.d.ts",
         "stylelint": "stylelint src/**/*.scss --syntax scss",
         "stats": "webpack --config webpack.production.config.ts --profile --json > compilation-stats.json"
