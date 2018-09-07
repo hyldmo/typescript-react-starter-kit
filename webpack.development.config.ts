@@ -13,7 +13,14 @@ const config: webpack.Configuration = {
 		port: 1337,
 		overlay: true,
 		stats: baseConfig.stats as any
-	}
+	},
+
+	plugins: [
+		...baseConfig.plugins,
+		new webpack.WatchIgnorePlugin([
+			/css\.d\.ts$/
+		])
+	]
 }
 
 module.exports = config

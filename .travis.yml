@@ -8,8 +8,7 @@ script:
   - yarn lint
   - yarn stylelint
   - yarn test:cover
-  - yarn webpack --config webpack.development.config.ts
-  - yarn prod
+  - yarn prod || yarn prod # Have to run twice for scss.d.ts modules to be picked up
 
 notifications:
   email: false
