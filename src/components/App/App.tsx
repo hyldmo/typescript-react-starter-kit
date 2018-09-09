@@ -9,18 +9,14 @@ import Sessions, { Session } from '../Sessions'
 import { BASE_URL } from 'consts'
 import './App.scss'
 
-let baseUrl = BASE_URL
-if (baseUrl.endsWith('/'))
-	baseUrl = baseUrl.slice(0, -1)
-
 const App: React.StatelessComponent = () => (
 	<>
 		<Navbar/>
 		<main>
 			<Switch>
-				<Route exact path={`${baseUrl}/`} component={Sessions} />
-				<Route exact path={`${baseUrl}/sessions`} component={Sessions} />
-				<Route exact path={`${baseUrl}/sessions/:id`} component={Session} />
+				<Route exact path={`${BASE_URL}/`} component={Sessions} />
+				<Route exact path={`${BASE_URL}/sessions`} component={Sessions} />
+				<Route exact path={`${BASE_URL}/sessions/:id`} component={Session} />
 				<Route component={NotFound}/>
 			</Switch>
 		</main>

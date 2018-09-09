@@ -4,7 +4,7 @@ export const PRODUCTION = process.env.NODE_ENV === 'production'
 
 export const BASE_URL = PRODUCTION
 	? '/devnull-client'
-	: '/'
+	: ''
 
 /**
  * SleepingPill ID of the current JavaZone

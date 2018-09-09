@@ -22,7 +22,7 @@ const config: webpack.Configuration = {
 
 	output: {
 		path: path.join(__dirname, 'dist'),
-		publicPath: BASE_URL,
+		publicPath: BASE_URL.startsWith('/') ? BASE_URL : `/${BASE_URL}`,
 		filename: '[name]-[hash].js'
 	},
 
