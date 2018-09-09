@@ -27,15 +27,15 @@ class Session extends React.Component<Props, Feedback> {
 		if (!session)
 			fetchSessions(CURRENT_JZ)
 
-		const response = await api(`${DEVNULL_URL}/events/${CURRENT_JZ.id}/sessions/${match.params.id}/feedbacks`, {
-			headers: new Headers({ 'Voter-ID': user as string })
+		const response = await api<FeedbackResponse>(`${DEVNULL_URL}/events/${CURRENT_JZ.id}/sessions/${match.params.id}/feedbacks`, {
+			headers: new Headers({ 'Voter-ID': user.id })
 		})
-		const body: FeedbackResponse = await response.json()
 
-		this.setState({
-			...omit(body.session.online, 'count'),
-			comments: body.comments[0]
-		})
+		if (response.ok)
+			this.setState({
+				...omit(response.body.session.online, 'count'),
+				comments: response.body.comments[0]
+			})
 	}
 
 	onFeedbackEntered: React.ChangeEventHandler<HTMLTextAreaElement> = e => {
@@ -55,8 +55,8 @@ class Session extends React.Component<Props, Feedback> {
 		this.props.submitFeedback(this.state, this.props.session.sessionId)
 	}
 
-	render (): JSX.Element {
-		const { session } = this.props
+	render () {
+		const { session, feedback } = this.props
 		const { comments, relevance, content, quality } = this.state
 		if (!session) return <h1>Session not found</h1>
 
@@ -87,7 +87,10 @@ class Session extends React.Component<Props, Feedback> {
 
 					<h3>Comments</h3>
 					<textarea name="feedback" rows={5} onChange={this.onFeedbackEntered} value={comments} />
-					<button type="submit">Send</button>
+					<button type="submit" disabled={feedback.submitting}>
+						{feedback.submitting ? 'Submitting...' : 'Send'}
+					</button>
+					{feedback.error && <span className={classnames.error}>{feedback.error}</span>}
 				</form>
 			</div>
 		)
@@ -98,7 +101,8 @@ const mapStateToProps = (state: ReduxState, ownProps: RouteComponentProps<{ id: 
 	const { sessions } = state.sessions
 	return {
 		user: state.user,
-		session: sessions && sessions.find(sesh => sesh.sessionId === ownProps.match.params.id)
+		session: sessions && sessions.find(sesh => sesh.sessionId === ownProps.match.params.id),
+		feedback: state.feedback
 	}
 }
 

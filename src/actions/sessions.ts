@@ -10,6 +10,6 @@ export default {
 	fetchFeedbackSuccess: createAction<'FETCH_FEEDBACK_SUCCES', Feedback, Session['sessionId']>('FETCH_FEEDBACK_SUCCES'),
 
 	submitFeedback: createAction<'SUBMIT_FEEDBACK', Feedback, Session['sessionId']>('SUBMIT_FEEDBACK'),
-	submitFeedbackSuccess: createAction<'SUBMIT_FEEDBACK_SUCCESS'>('SUBMIT_FEEDBACK_SUCCESS'),
-	submitFeedbackError: createAction<'SUBMIT_FEEDBACK_ERROR', {}>('SUBMIT_FEEDBACK_ERROR')
+	submitFeedbackSuccess: createAction<'SUBMIT_FEEDBACK_SUCCESS', Feedback, Session['sessionId']>('SUBMIT_FEEDBACK_SUCCESS'),
+	submitFeedbackError: createAction<'SUBMIT_FEEDBACK_ERROR', string>('SUBMIT_FEEDBACK_ERROR')
 }

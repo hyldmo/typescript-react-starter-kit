@@ -10,11 +10,17 @@
 	th {
 		text-align: left;
 	}
+
 	td, th {
 		padding: 0.5rem 1rem 0.5rem 0;
 	}
 
 	button[type="submit"] {
 		margin: 1rem 0;
+	}
+
+	.error {
+		color: $logo-red;
+		padding: 0.5rem;
 	}
 }

@@ -3,8 +3,7 @@
 		"outDir": "./dist/",
 		"sourceMap": true,
 		"strict": true,
-		"strictFunctionTypes": false, //blocked by https://github.com/Microsoft/TypeScript/issues/12400
-		"noUnusedLocals": true,
+		"strictFunctionTypes": false,
 		"resolveJsonModule": true,
 		"downlevelIteration": true,
 		"module": "commonjs",
