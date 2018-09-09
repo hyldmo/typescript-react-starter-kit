@@ -1,10 +1,13 @@
 import { Actions } from 'actions'
+import SessionCard from 'components/SessionCard'
 import { CURRENT_JZ } from 'consts'
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { SessionFilter, State as ReduxState } from 'types'
-import { DateDiff, filterSessions } from 'utils'
+import { DateDiff, filterSessions, getDay, groupBy } from 'utils'
+import SessionsByDate from './SessionsByDate'
+
+import css from './Sessions.scss'
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 
@@ -33,42 +36,43 @@ class Sessions extends React.Component<Props, State> {
 				<h1>Not able to fetch talks</h1>
 			)
 			case 'success': return (
-				<>
-					<h1>Talks</h1>
+				<div className={css.sessions}>
+					<h1>Sessions</h1>
 					<button onClick={() => this.setState({ filter: SessionFilter.open })}>Recent</button>
 					<button onClick={() => this.setState({ filter: SessionFilter.mine })}>Mine</button>
 					<button onClick={() => this.setState({ filter: SessionFilter.all })}>All</button>
 					{filter === SessionFilter.open ? (
+						<SessionsByDate sessions={filterSessions(sessions, user, this.state.filter)
+							.filter(sesh => new DateDiff(new Date(), sesh.endTime).hours() <= 1)
+							.sort(({ startTime: a }, { startTime: b }) =>  a > b ? 1 : a < b ? -1 : 0)}
+						/>
+					) : filter === SessionFilter.all ? (
 						<ul>
-							{filterSessions(sessions, user, this.state.filter)
-								.filter(sesh => new DateDiff(new Date(), sesh.endTime).hours() <= 1)
-								.sort(({ startTime: a }, { startTime: b }) =>  a > b ? 1 : a < b ? -1 : 0)
-								.map(sesh => (
-								<li key={sesh.sessionId}>
-									{sesh.startTime.toTimeString().slice(0, 5)}
-									&nbsp;
-									<Link to={`sessions/${sesh.sessionId}`}>{sesh.title}</Link>
-								</li>
-							))}
-						</ul>
-					) : filter === SessionFilter.mine ? (
-						<ul>
-							{filterSessions(sessions, user, filter).map(sesh => (
-								<li key={sesh.sessionId}>
-									<Link to={`sessions/${sesh.sessionId}`}>{sesh.title}</Link>
-								</li>
+							{groupBy(
+								filterSessions(sessions, user, filter)
+									.sort(({ startTime: a }, { startTime: b }) =>  a > b ? 1 : a < b ? -1 : 0)
+									.map(sesh => ({
+										...sesh,
+										day: getDay(sesh.startTime.getDay())
+									})),
+								'day'
+							).map(([key, values]) => (
+								<React.Fragment key={key}>
+									<h2>{key}</h2>
+									<SessionsByDate sessions={values} heading={<h3 />} />
+								</React.Fragment>
 							))}
 						</ul>
 					) : (
-						<ul>
-							{filterSessions(sessions, user, this.state.filter).map(sesh => (
+						<ul style={{ marginTop: '1rem' }}>
+							{filterSessions(sessions, user, filter).map(sesh => (
 								<li key={sesh.sessionId}>
-									<Link to={`sessions/${sesh.sessionId}`}>{sesh.title}</Link>
+									<SessionCard session={sesh}/>
 								</li>
 							))}
 						</ul>
 					)}
-				</>
+				</div>
 			)
 		}
 	}

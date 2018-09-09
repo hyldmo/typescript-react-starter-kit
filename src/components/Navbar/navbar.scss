@@ -12,7 +12,8 @@ header {
 
 		ul {
 			list-style: none;
-			margin: $header-height / 3 0;
+			line-height:  $header-height;
+			margin: 0;
 			padding: 0;
 
 			li {
@@ -20,6 +21,11 @@ header {
 				&:not(:last-child)::after {
 					content: "|";
 					margin: 0.3rem;
+				}
+
+				a {
+					text-decoration: none;
+					font-size: 1.2rem;
 				}
 			}
 		}

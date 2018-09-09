@@ -9,11 +9,6 @@ const config: webpack.Configuration = {
 	mode: 'production',
 	devtool: 'source-map',
 
-	output: {
-		...baseConfig.output,
-		publicPath: '/devnull-client'
-	},
-
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
