@@ -1,9 +1,3 @@
-import { Omit } from 'react-redux'
-
-import reducers from 'reducers'
-
-export type State = ReturnType<typeof reducers>
-
 export interface Session {
 	/**
 	 *  The ID of the session
@@ -41,35 +35,15 @@ export interface Session {
 	 *  A list of speakers for the talk
 	 */
 	speakers: string
-}
 
-export interface Speaker {
 	/**
-	 *  Name of the speaker
+	 * Start time in UTC
 	 */
-	name: string
+	startTime: Date
 	/**
-	 *  What the speaker said about him/herself
+	 * Start time in UTC
 	 */
-	bio: string
-	/**
-	 *  The speakers Twitter account
-	 */
-	twitter: string
-	/**
-	 *  Url to a picture of the speaker
-	 */
-	picture: string
-}
-
-export type Rating = 0 | 1 | 2 | 3 | 4 | 5 | number
-
-export interface Feedback {
-	overall: Rating,
-	relevance: Rating,
-	content: Rating,
-	quality: Rating,
-	comments?: string
+	endTime: Date
 }
 
 export interface Event {
@@ -78,18 +52,8 @@ export interface Event {
 	slug: string
 }
 
-export interface FeedbackResult {
-	online: Omit<Feedback, 'comments'> & {count: 0.0}
-	paper: {
-		green: number
-		yellow: number
-		red: number
-	}
-	participants: number
-}
-
-export type FeedbackResponse = {
-	session: FeedbackResult
-	conference: FeedbackResult
-	comments: string[]
+export enum SessionFilter {
+	all,
+	open,
+	mine
 }

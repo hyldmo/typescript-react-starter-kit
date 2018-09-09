@@ -1,9 +1,20 @@
+import fs from 'fs'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import packageJSON from './package.json'
+import tsConfig from './tsconfig.json'
 
-const srcResolve = (dir: string) => path.join(__dirname, 'src', dir)
+const srcDirs = () => {
+	const aliases: any = {}
+	const baseUrl = path.join(__dirname, tsConfig.compilerOptions.baseUrl)
+	fs.readdirSync(baseUrl)
+		.forEach(uri => {
+			uri = uri.split('.')[0]
+			aliases[uri] = path.join(baseUrl, uri)
+		})
+	return aliases
+}
 
 const config: webpack.Configuration = {
 	entry: './src/index.tsx',
@@ -15,14 +26,7 @@ const config: webpack.Configuration = {
 	},
 
 	resolve: {
-		alias: {
-			actions: srcResolve('actions'),
-			components: srcResolve('components'),
-			consts: srcResolve('consts'),
-			reducers: srcResolve('reducers'),
-			styles: srcResolve('styles'),
-			utils: srcResolve('utils')
-		},
+		alias: srcDirs(),
 		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
 	},
 
