@@ -18,6 +18,6 @@
 		"baseUrl": "src"
 	},
 	"include": [
-		"./src/*", "src/reducers/sessions.ts", "src/reducers/talks.ts", "src/components/Sessions/Sessions.tsx", "src/components/Sessions/Session.tsx", "src/components/Session.tsx", "src/components/Sessions.tsx", "src/actions/sessions.ts", "src/components/Sessions/StarRating/StarRating.tsx", "src/sagas/sessions.ts"
+		"./src/*"
 	]
 }

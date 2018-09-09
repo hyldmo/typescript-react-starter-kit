@@ -1,0 +1,27 @@
+@import "~styles/_variables.scss";
+
+.button {
+	cursor: pointer;
+	background: $secondary-color;
+	border: 3px solid $primary-color;
+	padding: 0.5rem 0.8rem;
+	color: $primary-color;
+	font-weight: bold;
+	font-size: 20px;
+
+	&:hover {
+		background-color: rgba(white, 0.1)
+	}
+	outline: none;
+
+	&.active, &:focus {
+		color: $secondary-color;
+		background-color: $primary-color;
+	}
+}
+
+.buttongroup {
+	> .button:not(:last-child) {
+		border-right: none;
+	}
+}

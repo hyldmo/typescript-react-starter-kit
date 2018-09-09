@@ -1,8 +1,10 @@
+@import "~styles/_variables.scss";
+
 .session {
 	font-size: 1.5rem;
 	display: block;
-	background: #f7ae1a;
-	color: #212121;
+	background: $primary-color;
+	color: $secondary-color;
 	padding: 1rem;
 	margin-bottom: 1rem;
 	text-decoration: none;

@@ -34,18 +34,3 @@ a {
 		@include grid-columns;
 	}
 }
-
-button, .button {
-	cursor: pointer;
-	background: transparent;
-	border: 3px solid white;
-	padding: 0.4rem 0.8rem 0.4rem 0.8rem;
-	color: $primary-color;
-	font-weight: bold;
-	font-size: 20px;
-
-	&:hover {
-		background-color: rgba(white, 0.1)
-	}
-	outline: none;
-}
