@@ -8,6 +8,7 @@ import { RouteComponentProps } from 'react-router'
 import { Feedback, FeedbackResponse, State as ReduxState } from 'types'
 import { api, capitalize, computeOverallRating, omit, pick } from 'utils'
 
+import Button from '../Button'
 import * as classnames from './Session.scss'
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps & RouteComponentProps<{ id: string }>
@@ -84,9 +85,9 @@ class Session extends React.Component<Props, Feedback> {
 
 					<h3>Comments</h3>
 					<textarea name="feedback" rows={5} onChange={this.onFeedbackEntered} value={comments} />
-					<button type="submit" disabled={feedback.submitting}>
+					<Button type="submit" disabled={feedback.submitting}>
 						{feedback.submitting ? 'Submitting...' : 'Send'}
-					</button>
+					</Button>
 					{feedback.error && <span className={classnames.error}>{feedback.error}</span>}
 				</form>
 			</div>

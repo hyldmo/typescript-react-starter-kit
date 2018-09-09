@@ -1,4 +1,5 @@
 import { Actions } from 'actions'
+import { Button, ButtonGroup } from 'components/Button'
 import SessionCard from 'components/SessionCard'
 import { CURRENT_JZ } from 'consts'
 import React from 'react'
@@ -38,9 +39,11 @@ class Sessions extends React.Component<Props, State> {
 			case 'success': return (
 				<div className={css.sessions}>
 					<h1>Sessions</h1>
-					<button onClick={() => this.setState({ filter: SessionFilter.open })}>Recent</button>
-					<button onClick={() => this.setState({ filter: SessionFilter.mine })}>Mine</button>
-					<button onClick={() => this.setState({ filter: SessionFilter.all })}>All</button>
+					<ButtonGroup>
+						<Button active={filter === SessionFilter.open} onClick={() => this.setState({ filter: SessionFilter.open })}>Recent</Button>
+						<Button active={filter === SessionFilter.mine} onClick={() => this.setState({ filter: SessionFilter.mine })}>Mine</Button>
+						<Button active={filter === SessionFilter.all} onClick={() => this.setState({ filter: SessionFilter.all })}>All</Button>
+					</ButtonGroup>
 					{filter === SessionFilter.open ? (
 						<SessionsByDate sessions={filterSessions(sessions, user, this.state.filter)
 							.filter(sesh => new DateDiff(new Date(), sesh.endTime).hours() <= 1)
