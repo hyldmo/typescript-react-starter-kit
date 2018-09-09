@@ -8,7 +8,6 @@ export interface StarRatingProps {
 	 */
 	totalStars: number
 
-
 	/**
 	 * Input fields name
 	 */

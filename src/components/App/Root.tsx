@@ -1,3 +1,4 @@
+import { Actions } from 'actions'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
@@ -6,6 +7,7 @@ import configureStore, { history } from '../../configureStore'
 import App from './App'
 
 const store = configureStore()
+store.dispatch(Actions.loadUser())
 
 type State = {
 	error: Error | null

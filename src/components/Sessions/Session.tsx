@@ -1,11 +1,12 @@
 import { Actions } from 'actions'
 import StarRating from 'components/StarRating'
+import { CURRENT_JZ } from 'consts'
+import { DEVNULL_URL } from 'consts'
 import React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import { State as ReduxState } from 'reducers'
-import { Feedback } from 'types'
-import { capitalize, computeOverallRating, omit, pick } from 'utils'
+import { Feedback, FeedbackResponse, State as ReduxState } from 'types'
+import { api, capitalize, computeOverallRating, omit, pick } from 'utils'
 
 import * as classnames from './Session.scss'
 
@@ -21,8 +22,20 @@ class Session extends React.Component<Props, Feedback> {
 		quality: 0,
 		comments: ''
 	}
-	componentDidMount () {
-		this.props.fetchSessions(2018)
+	async componentDidMount () {
+		const { fetchSessions, session, match, user } = this.props
+		if (!session)
+			fetchSessions(CURRENT_JZ)
+
+		const response = await api<FeedbackResponse>(`${DEVNULL_URL}/events/${CURRENT_JZ.id}/sessions/${match.params.id}/feedbacks`, {
+			headers: new Headers({ 'Voter-ID': user.id })
+		})
+
+		if (response.ok)
+			this.setState({
+				...omit(response.body.session.online, 'count'),
+				comments: response.body.comments[0]
+			})
 	}
 
 	onFeedbackEntered: React.ChangeEventHandler<HTMLTextAreaElement> = e => {
@@ -31,18 +44,19 @@ class Session extends React.Component<Props, Feedback> {
 
 	handleStarClick = (n: number, name: keyof State) => {
 		const entry = { [name]: n } as object // TODO: Switch to more specific cast or remove altogether
-
-		console.log(n, entry)
 		this.setState(entry)
 	}
 
 	handleSubmit: React.FormEventHandler<HTMLFormElement> = e => {
 		e.preventDefault()
-		this.props.submitFeedback(this.state)
+		if (!this.props.session)
+			throw new Error('Session not found')
+
+		this.props.submitFeedback(this.state, this.props.session.sessionId)
 	}
 
-	render (): JSX.Element {
-		const { session } = this.props
+	render () {
+		const { session, feedback } = this.props
 		const { comments, relevance, content, quality } = this.state
 		if (!session) return <h1>Session not found</h1>
 
@@ -53,7 +67,7 @@ class Session extends React.Component<Props, Feedback> {
 					<tbody>
 					{Object.entries(pick(session, 'speakers', 'language', 'format')).map(([key, value]) => (
 						<tr key={key}>
-							<td>{capitalize(key)}</td>
+							<th>{capitalize(key)}</th>
 							<td>{capitalize(value)}</td>
 						</tr>
 					))}
@@ -73,7 +87,10 @@ class Session extends React.Component<Props, Feedback> {
 
 					<h3>Comments</h3>
 					<textarea name="feedback" rows={5} onChange={this.onFeedbackEntered} value={comments} />
-					<button type="submit">Send</button>
+					<button type="submit" disabled={feedback.submitting}>
+						{feedback.submitting ? 'Submitting...' : 'Send'}
+					</button>
+					{feedback.error && <span className={classnames.error}>{feedback.error}</span>}
 				</form>
 			</div>
 		)
@@ -83,12 +100,15 @@ class Session extends React.Component<Props, Feedback> {
 const mapStateToProps = (state: ReduxState, ownProps: RouteComponentProps<{ id: string }>) => {
 	const { sessions } = state.sessions
 	return {
-		session: sessions && sessions.find(sesh => sesh.sessionId === ownProps.match.params.id)
+		user: state.user,
+		session: sessions && sessions.find(sesh => sesh.sessionId === ownProps.match.params.id),
+		feedback: state.feedback
 	}
 }
 
 const dispatchToProps = {
 	fetchSessions: Actions.fetchSessions,
+	fetchFeedback: Actions.fetchFeedback,
 	submitFeedback: Actions.submitFeedback
 }
 

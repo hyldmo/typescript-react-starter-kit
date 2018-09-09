@@ -1,7 +1,9 @@
-import ConferenceActions from './sessions'
+import sessionActions from './sessions'
+import userActions from './user'
 
 export const Actions = {
-	...ConferenceActions
+	...sessionActions,
+	...userActions
 }
 
 export type Action = typeof Actions[keyof typeof Actions]

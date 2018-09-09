@@ -8,8 +8,15 @@ script:
   - yarn lint
   - yarn stylelint
   - yarn test:cover
-  - yarn webpack --config webpack.development.config.ts
-  - yarn prod
+  - yarn prod || yarn prod # Have to run twice for scss.d.ts modules to be picked up
+
+deploy:
+  provider: pages
+  local_dir: dist
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master
 
 notifications:
   email: false

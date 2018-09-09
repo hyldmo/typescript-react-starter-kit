@@ -4,11 +4,12 @@
 import { Store } from 'redux'
 import { SagaMiddleware } from 'redux-saga'
 import { cancel, fork, take } from 'redux-saga/effects'
-
-import { State } from 'reducers'
+import { State } from 'types'
+import feedback from './feedback'
 import sessions from './sessions'
+import user from './user'
 
-const sagas = [sessions]
+const sagas = [feedback, sessions, user]
 
 export const CANCEL_SAGAS_HMR = 'CANCEL_SAGAS_HMR'
 

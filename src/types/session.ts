@@ -35,33 +35,25 @@ export interface Session {
 	 *  A list of speakers for the talk
 	 */
 	speakers: string
+
+	/**
+	 * Start time in UTC
+	 */
+	startTime: Date
+	/**
+	 * Start time in UTC
+	 */
+	endTime: Date
 }
 
-export interface Speaker {
-	/**
-	 *  Name of the speaker
-	 */
+export interface Event {
 	name: string
-	/**
-	 *  What the speaker said about him/herself
-	 */
-	bio: string
-	/**
-	 *  The speakers Twitter account
-	 */
-	twitter: string
-	/**
-	 *  Url to a picture of the speaker
-	 */
-	picture: string
+	id: string
+	slug: string
 }
 
-export type Rating = 0 | 1 | 2 | 3 | 4 | 5 | number
-
-export interface Feedback {
-	overall: Rating,
-	relevance: Rating,
-	content: Rating,
-	quality: Rating,
-	comments?: string
+export enum SessionFilter {
+	all,
+	open,
+	mine
 }

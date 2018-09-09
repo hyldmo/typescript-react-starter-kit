@@ -15,12 +15,3 @@ export function omit<T extends object, K extends keyof T> (object: T, ...keys: K
 	})
 	return copy
 }
-
-export function capitalize (str: string): string {
-	return str.substr(0, 1).toLocaleUpperCase() + str.substr(1, str.length)
-}
-
-export function computeOverallRating (...ratings: number[]): number {
-	const relevant = ratings.filter(rating => rating !== 0)
-	return Math.round(relevant.reduce((a, b) => a + b, 0) / relevant.length)
-}

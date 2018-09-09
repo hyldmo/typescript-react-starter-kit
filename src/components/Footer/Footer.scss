@@ -2,14 +2,12 @@
 
 footer {
 	display: grid;
-
 	@include grid-columns;
+
+	color: $secondary-color;
 
 	span {
 		grid-column: 2 / 3;
 	}
 
-	a {
-		color: $secondary-color;
-	}
 }
