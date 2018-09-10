@@ -65,7 +65,7 @@
         "@types/react-test-renderer": "^16.0.0",
         "@types/redux-actions": "^2.2.3",
         "@types/webpack": "^4.4.9",
-        "@types/webpack-dev-server": "^2.9.5",
+        "@types/webpack-dev-server": "^3.1.0",
         "@types/webpack-env": "^1.13.5",
         "coveralls": "^3.0.0",
         "css-loader": "^1.0.0",
