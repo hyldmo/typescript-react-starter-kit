@@ -1,5 +1,4 @@
 
-
 export interface Speaker {
 	/**
 	 *  Name of the speaker
