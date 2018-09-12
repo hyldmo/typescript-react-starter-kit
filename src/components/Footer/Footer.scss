@@ -1,7 +1,8 @@
 @import "~styles/_variables.scss";
 
 footer {
-	display: grid;
+	display: none; // TODO: Make header not look awful
+	// display: grid;
 	@include grid-columns;
 
 	color: $secondary-color;

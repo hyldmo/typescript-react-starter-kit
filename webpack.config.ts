@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import packageJSON from './package.json'
+import { BASE_URL } from './src/consts'
 import tsConfig from './tsconfig.json'
 
 const srcDirs = () => {
@@ -21,7 +22,7 @@ const config: webpack.Configuration = {
 
 	output: {
 		path: path.join(__dirname, 'dist'),
-		publicPath: '/',
+		publicPath: BASE_URL,
 		filename: '[name]-[hash].js'
 	},
 

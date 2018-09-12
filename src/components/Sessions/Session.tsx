@@ -65,7 +65,7 @@ class Session extends React.Component<Props, Feedback> {
 				<h1>{session.title}</h1>
 				<table>
 					<tbody>
-					{Object.entries(pick(session, 'speakers', 'language', 'format')).map(([key, value]) => (
+					{Object.entries(pick(session, 'speakers', 'format')).map(([key, value]) => (
 						<tr key={key}>
 							<th>{capitalize(key)}</th>
 							<td>{capitalize(value)}</td>
@@ -75,15 +75,12 @@ class Session extends React.Component<Props, Feedback> {
 				</table>
 				<h2>Give feedback</h2>
 				<form onSubmit={this.handleSubmit}>
-					{Object.entries(omit(this.state, 'comments', 'overall')).map(([key, value]) => (
+					{Object.entries(omit(this.state, 'comments')).map(([key, value]) => (
 						<React.Fragment key={key}>
 							<h3>{capitalize(key)}</h3>
 							<StarRating name={key} stars={value} totalStars={5} onClick={this.handleStarClick} />
 						</React.Fragment>
 					))}
-
-					<h3>Overall</h3>
-					<StarRating name={'overall'} stars={computeOverallRating(relevance, content, quality)} totalStars={5} onClick={this.handleStarClick} readonly />
 
 					<h3>Comments</h3>
 					<textarea name="feedback" rows={5} onChange={this.onFeedbackEntered} value={comments} />

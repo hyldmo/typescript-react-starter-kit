@@ -17,7 +17,7 @@ $screen-lg: 1520px;
 $pixel-border-size: 3rem;
 $section-margin: 2rem 0 2rem 0;
 $header-height: 3rem;
-$max-width: 60rem;
+$max-width: $screen-md;
 
 @mixin grid-columns {
 	grid-template-columns: auto $max-width auto;

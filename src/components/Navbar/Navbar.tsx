@@ -1,3 +1,4 @@
+import { BASE_URL } from 'consts'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -8,8 +9,7 @@ const Navbar: React.StatelessComponent = () => {
 		<header>
 			<nav>
 				<ul>
-					<li><Link to="/">Home</Link></li>
-					<li><Link to="/sessions">Sessions</Link></li>
+					<li><Link to={BASE_URL}>dev/null</Link></li>
 				</ul>
 			</nav>
 		</header>
