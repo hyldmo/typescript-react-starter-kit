@@ -1,7 +1,6 @@
 import { Actions } from 'actions'
 import React from 'react'
 import { connect } from 'react-redux'
-import { returntypeof } from 'react-redux-typescript'
 import { State } from 'reducers'
 
 const mapStateToProps = (state: State) => ({
@@ -12,8 +11,7 @@ const dispatchToProps = {
 	fetchVersion: Actions.fetchVersion
 }
 
-const stateProps = returntypeof(mapStateToProps)
-type Props = typeof stateProps & typeof dispatchToProps
+type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 
 class Version extends React.Component<Props> {
 	componentDidMount () {
