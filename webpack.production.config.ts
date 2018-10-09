@@ -10,7 +10,7 @@ const config: webpack.Configuration = {
 
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: '[name]-[chunkash].js'
+		filename: '[name]-[chunkhash].js'
 	},
 
 	mode: 'production',
