@@ -7,6 +7,8 @@ import { Route, Switch } from 'react-router'
 
 import Version from 'components/Version'
 
+import './App.scss'
+
 const App: React.StatelessComponent = () => (
 	<>
 		<Navbar/>

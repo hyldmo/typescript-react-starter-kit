@@ -11,6 +11,9 @@
 		"max-empty-lines": 1,
 		"no-eol-whitespace": true,
 		"selector-type-no-unknown": null,
+		"selector-pseudo-class-no-unknown": [true, {
+			"ignorePseudoClasses": ["global"]
+		}],
 		"property-no-unknown": null,
 		"scss/dollar-variable-no-missing-interpolation": true
 	}

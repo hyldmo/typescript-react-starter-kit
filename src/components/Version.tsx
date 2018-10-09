@@ -3,14 +3,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { State } from 'reducers'
 
-const mapStateToProps = (state: State) => ({
-	version: state.version
-})
-
-const dispatchToProps = {
-	fetchVersion: Actions.fetchVersion
-}
-
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 
 class Version extends React.Component<Props> {
@@ -25,6 +17,14 @@ class Version extends React.Component<Props> {
 			</h1>
 		)
 	}
+}
+
+const mapStateToProps = (state: State) => ({
+	version: state.version
+})
+
+const dispatchToProps = {
+	fetchVersion: Actions.fetchVersion
 }
 
 export default connect(

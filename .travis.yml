@@ -8,8 +8,14 @@ script:
   - yarn lint
   - yarn stylelint
   - yarn test:cover
-  - yarn compileConf:dev
+  - yarn webpack --config webpack.development.config.ts
   - yarn prod
 
 notifications:
   email: false
+
+before_install: 
+    - yarn --frozen-lockfile
+    - yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
