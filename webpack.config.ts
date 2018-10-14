@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import packageJSON from './package.json'
+const HashAllModulesPlugin = require('hash-all-modules-plugin')
 
 const srcResolve = (dir: string) => path.join(__dirname, 'src', dir)
 
@@ -68,12 +69,14 @@ const config: webpack.Configuration = {
 		new webpack.DefinePlugin({
 			'process.env.PACKAGE_NAME': JSON.stringify(packageJSON.name),
 			'process.env.PACKAGE_VERSION': JSON.stringify(packageJSON.version)
-		})
+		}),
+		new webpack.HashedModuleIdsPlugin(),
+		new HashAllModulesPlugin()
 	],
 
 	optimization: {
+		runtimeChunk: 'single',
 		splitChunks: {
-			chunks: 'all',
 			cacheGroups: {
 				vendor: {
 					chunks: 'initial',

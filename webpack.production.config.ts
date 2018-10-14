@@ -10,16 +10,16 @@ const config: webpack.Configuration = {
 
 	output: {
 		path: path.join(__dirname, 'dist'),
-		filename: '[name]-[chunkhash].js',
-		chunkFilename: '[name].js'
+		filename: '[name]-[contenthash].js',
+		chunkFilename: '[name]-[contenthash].chunk.js'
 	},
 
 	mode: 'production',
 	devtool: 'source-map',
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: '[name].css',
-			chunkFilename: '[id].css'
+			filename: '[contenthash].css',
+			chunkFilename: '[contenthash].css'
 		}),
 		...baseConfig.plugins
 	]
