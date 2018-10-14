@@ -3,7 +3,7 @@ import { call, put  } from 'redux-saga/effects'
 
 import { Actions } from 'actions'
 
-export default function * watchConnects () {
+export default function * aboutSaga () {
 	yield takeEvery('FETCH_VERSION', fetchVersion)
 }
 

@@ -5,7 +5,7 @@ import NotFound from 'components/NotFound'
 import React from 'react'
 import { Route, Switch } from 'react-router'
 
-import Version from 'components/Version'
+import About from 'components/About'
 
 import './App.scss'
 
@@ -15,7 +15,7 @@ const App: React.StatelessComponent = () => (
 		<main>
 			<Switch>
 				<Route exact path="/" component={Home} />
-				<Route exact path="/version" component={Version} />
+				<Route exact path="/about" component={About} />
 				<Route component={NotFound}/>
 			</Switch>
 		</main>
