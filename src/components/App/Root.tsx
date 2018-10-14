@@ -2,7 +2,6 @@ import { Actions } from 'actions'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
-import RedBox from 'redbox-react'
 import configureStore, { history } from '../../configureStore'
 import App from './App'
 
@@ -18,6 +17,8 @@ class Root extends React.Component<{}, State> {
 		error: null
 	}
 
+	private RedBoxConstructor: typeof React.Component | null = null
+
 	componentWillReceiveProps () {
 		this.setState({ error: null })
 	}
@@ -25,13 +26,16 @@ class Root extends React.Component<{}, State> {
 	componentDidCatch (error: Error, info: React.ErrorInfo) {
 		// tslint:disable-next-line:no-console
 		console.warn(info)
-		this.setState({ error })
+		require('./App.lazybundle')(({ RedBox }: any) => {
+			this.RedBoxConstructor = RedBox.default
+			this.setState({ error })
+		})
 	}
 
 	render () {
 		const { error } = this.state
-		if (error && process.env.NODE_ENV !== 'test') {
-			return <RedBox error={error} />
+		if (error && process.env.NODE_ENV !== 'test' && typeof this.RedBoxConstructor === 'function') {
+			return <this.RedBoxConstructor error={error} />
 		}
 		return (
 			<Provider store={store}>

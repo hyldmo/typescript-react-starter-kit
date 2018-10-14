@@ -1310,6 +1310,13 @@ builtin-status-codes@^3.0.0:
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
 
+bundle-loader@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/bundle-loader/-/bundle-loader-0.5.6.tgz#6c9042e62f1c89941458805a3a479d10f34c71fd"
+  integrity sha512-SUgX+u/LJzlJiuoIghuubZ66eflehnjmqSfh/ib9DTe08sxRJ5F/MhHSjp7GfSJivSp8NWgez4PVNAUuMg7vSg==
+  dependencies:
+    loader-utils "^1.1.0"
+
 bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
@@ -3543,6 +3550,11 @@ has@^1.0.1:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+hash-all-modules-plugin@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/hash-all-modules-plugin/-/hash-all-modules-plugin-0.2.1.tgz#daf6d64b2fe3f4020bd7a7dea678e34c19a6ac29"
+  integrity sha512-oqxMYCuEsHR4oac7NMvwu+ulZ/qsxc2B0t5/qzfdVqK82dpABRVcjc6Gih2mpezbphJxyVRr0Lv1HtTbUz/2IA==
 
 hash-base@^3.0.0:
   version "3.0.4"

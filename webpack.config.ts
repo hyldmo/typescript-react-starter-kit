@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import packageJSON from './package.json'
+const HashAllModulesPlugin = require('hash-all-modules-plugin')
 import { getFolders } from './src/utils/webpack'
 import tsConfig from './tsconfig.json'
 
@@ -27,6 +28,18 @@ const config: webpack.Configuration = {
 						options: { sourceMap: true }
 					}))
 				]
+			},
+			{
+				test: /\.lazybundle\.js$/,
+				use: [
+					{
+						loader: 'bundle-loader',
+						options: {
+							lazy: true,
+							name: '[name]'
+						}
+					}
+				]
 			}
 		]
 	},
@@ -34,19 +47,22 @@ const config: webpack.Configuration = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: packageJSON.name
-				.split('-')
-				.map((name) => name.charAt(0).toUpperCase() + name.slice(1))
-				.join(' '),
+					.split('-')
+					.map((name) => name.charAt(0).toUpperCase() + name.slice(1))
+					.join(' '),
 			version: packageJSON.version,
 			template: 'static/index.ejs'
 		}),
 		new webpack.DefinePlugin({
 			'process.env.PACKAGE_NAME': JSON.stringify(packageJSON.name),
 			'process.env.PACKAGE_VERSION': JSON.stringify(packageJSON.version)
-		})
+		}),
+		new webpack.HashedModuleIdsPlugin(),
+		new HashAllModulesPlugin()
 	],
 
 	optimization: {
+		runtimeChunk: 'single',
 		splitChunks: {
 			cacheGroups: {
 				vendor: {
