@@ -10,20 +10,35 @@ html, body {
 	overflow-y: overlay;
 }
 
-:global { // Don't generate css-modules for these selectors
-	#root {
-		display: grid;
-		width: 100%;
-		height: 100%;
-		grid-template-areas:
-			"nav  nav    nav"
-			"left main   right"
-			"left footer right";
-		grid-template-rows: $header-height 1fr 4rem;
-		grid-template-columns: $grid-columns;
+body {
+	font-family: sans-serif;
+	color: $main-color;
+	background-color: $background-color;
+}
 
-		@include tablet {
-			grid-template-columns: 0 100% 0;
-		}
+button, input {
+	padding: 0.5em;
+	background-color: $background-color;
+	outline: none;
+	border: 2px solid $main-color;
+}
+
+button, input, table, fieldset {
+	border-radius: 0.25em;
+}
+
+#root {
+	display: grid;
+	width: 100%;
+	height: 100%;
+	grid-template-areas:
+		"nav  nav    nav"
+		"left main   right"
+		"left footer right";
+	grid-template-rows: $header-height 1fr 4rem;
+	grid-template-columns: $grid-columns;
+
+	@include tablet {
+		grid-template-columns: 0 100% 0;
 	}
 }

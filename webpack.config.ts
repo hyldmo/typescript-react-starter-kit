@@ -2,19 +2,14 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import packageJSON from './package.json'
-
-const srcResolve = (dir: string) => path.join(__dirname, 'src', dir)
+import { getFolders } from './src/utils/webpack'
+import tsConfig from './tsconfig.json'
 
 const config: webpack.Configuration = {
 	entry: './src/index.tsx',
 
 	resolve: {
-		alias: {
-			actions: srcResolve('actions'),
-			components: srcResolve('components'),
-			reducers: srcResolve('reducers'),
-			styles: srcResolve('styles')
-		},
+		alias: getFolders(path.join(__dirname, tsConfig.compilerOptions.baseUrl)),
 		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
 	},
 
@@ -27,15 +22,7 @@ const config: webpack.Configuration = {
 			{
 				test: /\.scss$/,
 				use: [
-					{
-						loader: 'typings-for-css-modules-loader',
-						options: {
-							modules: true,
-							namedExport: true,
-							sourceMap: true
-						}
-					},
-					...['postcss-loader', 'sass-loader'].map(loader => ({
+					...['css-loader', 'postcss-loader', 'sass-loader'].map(loader => ({
 						loader,
 						options: { sourceMap: true }
 					}))

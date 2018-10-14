@@ -6,6 +6,10 @@ main {
 
 footer {
 	grid-area: footer;
+	span {
+		display: inline-block;
+		margin-top: 0.5rem;
+	}
 }
 
 nav, main, footer {

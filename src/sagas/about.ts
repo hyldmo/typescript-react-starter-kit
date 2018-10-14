@@ -1,9 +1,7 @@
-import { takeEvery } from 'redux-saga'
-import { call, put  } from 'redux-saga/effects'
-
 import { Actions } from 'actions'
+import { call, put, takeEvery  } from 'redux-saga/effects'
 
-export default function * watchConnects () {
+export default function* () {
 	yield takeEvery('FETCH_VERSION', fetchVersion)
 }
 
