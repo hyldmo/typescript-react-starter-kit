@@ -8,11 +8,12 @@ script:
   - yarn lint
   - yarn stylelint
   - yarn test:cover
-  - yarn webpack --config webpack.development.config.ts
+  - yarn dev & wait-on http://localhost:1337
+  - yarn test:e2e
   - yarn prod
 
 notifications:
   email: false
 
-before_install: 
+before_install:
   - yarn --frozen-lockfile
