@@ -7,7 +7,7 @@ import { range } from 'utils'
 import MultiSessionSchedule from './MultiSessionSchedule'
 import SingleSessionSchedule from './SingleSessionSchedule'
 
-import css from './Tracker.scss'
+import './Tracker.scss'
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 
@@ -47,7 +47,7 @@ class Tracker extends React.Component<Props, State> {
 		const currentActivity = activities.find(a => a.name === this.state.currentActivity) || activities[0]
 		const weeks = range(1, 8)
 		return (
-			<div className={css.tracker}>
+			<div className="tracker">
 				<h1>Tracker</h1>
 				<fieldset>
 					<legend>Add activity</legend>
