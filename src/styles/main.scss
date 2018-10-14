@@ -8,6 +8,7 @@
 html, body {
 	height: 100%;
 	overflow-y: overlay;
+	font-family: sans-serif;
 }
 
 :global { // Don't generate css-modules for these selectors

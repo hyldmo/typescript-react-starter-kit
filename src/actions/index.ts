@@ -1,7 +1,9 @@
-import DemoActions from './version'
+import TrackerActions from './tracker'
+import VersionActions from './version'
 
 export const Actions = {
-	...DemoActions
+	...TrackerActions,
+	...VersionActions
 }
 
 export type Action = typeof Actions[keyof typeof Actions]

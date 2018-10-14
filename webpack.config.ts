@@ -2,8 +2,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import packageJSON from './package.json'
-import tsConfig from './tsconfig.json'
 import { getFolders } from './src/utils/webpack'
+import tsConfig from './tsconfig.json'
 
 const config: webpack.Configuration = {
 	entry: './src/index.tsx',

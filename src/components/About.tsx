@@ -1,7 +1,7 @@
 import { Actions } from 'actions'
 import React from 'react'
 import { connect } from 'react-redux'
-import { State } from 'reducers'
+import { State } from 'types'
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 

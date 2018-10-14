@@ -18,6 +18,6 @@
 		"baseUrl": "src"
 	},
 	"include": [
-		"./src/*"
+		"./src/*", "src/components/Tracker/Tracker.tsx", "src/components/App/Footer.tsx"
 	]
 }
