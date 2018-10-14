@@ -40,6 +40,18 @@ const config: webpack.Configuration = {
 						options: { sourceMap: true }
 					}))
 				]
+			},
+			{
+				test: /\.lazybundle\.js$/,
+				use: [
+					{
+						loader: 'bundle-loader',
+						options: {
+							lazy: true,
+							name: '[name]'
+						}
+					}
+				]
 			}
 		]
 	},
@@ -47,9 +59,9 @@ const config: webpack.Configuration = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: packageJSON.name
-				.split('-')
-				.map((name) => name.charAt(0).toUpperCase() + name.slice(1))
-				.join(' '),
+					.split('-')
+					.map((name) => name.charAt(0).toUpperCase() + name.slice(1))
+					.join(' '),
 			version: packageJSON.version,
 			template: 'static/index.ejs'
 		}),
@@ -61,6 +73,7 @@ const config: webpack.Configuration = {
 
 	optimization: {
 		splitChunks: {
+			chunks: 'all',
 			cacheGroups: {
 				vendor: {
 					chunks: 'initial',
