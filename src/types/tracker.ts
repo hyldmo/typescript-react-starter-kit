@@ -5,3 +5,10 @@ export type Activity = {
 	intervalsPerSession: number
 	sessionsPerWeek: number
 }
+
+export type ActivityValue = {
+	base: number
+	setModifier: number
+	bonus: number
+	total: number
+}

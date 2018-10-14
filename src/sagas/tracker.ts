@@ -10,7 +10,7 @@ const predicate: Predicate<Action> = (a: Action) => a.type.includes('ACTIVITY')
 
 export default function* () {
 	yield takeLatest<Action>(predicate as any, save)
-	yield takeLatest('SAVE_LOADED', load)
+	yield takeLatest('SAVE_LOAD', load)
 }
 
 function* save () {

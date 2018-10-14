@@ -18,6 +18,6 @@
 		"baseUrl": "src"
 	},
 	"include": [
-		"./src/*", "src/components/Tracker/Tracker.tsx", "src/components/App/Footer.tsx"
+		"./src/*", "src/components/Tracker/Tracker.tsx", "src/components/App/Footer.tsx", "src/components/Tracker/MultiSessionSchedule.tsx", "src/components/Routes/About.tsx", "src/components/Routes/NotFound.tsx", "src/components/Routes/Home.tsx", "src/components/Button/Button.tsx"
 	]
 }

@@ -7,6 +7,9 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit?targetFile=package.json)
 ----
 
+## Overview ##
+This repository showcases a bunch of different technologies and frameworks that I use when developing React projects, combined into an opinionated boilerplate.
+
 ## Features ##
 - [Typescript](http://www.typescriptlang.org/) for type-checking
 - [TSLint](https://palantir.github.io/tslint/) to ensure consistent style
@@ -24,4 +27,4 @@
 - [Stylelint](https://stylelint.io/) for linting SCSS/CSS
 - [Travis](https://travis-ci.org/) for CI
 
-To get started, run `npm i` or `yarn` to fetch dependencies and `npm run dev` or `yarn dev` to start the development server
+To get started, run `yarn` to fetch dependencies and `yarn dev` to start the development server

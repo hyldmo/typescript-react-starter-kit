@@ -8,7 +8,23 @@
 html, body {
 	height: 100%;
 	overflow-y: overlay;
+}
+
+body {
 	font-family: sans-serif;
+	color: $main-color;
+	background-color: $background-color;
+}
+
+button, input {
+	padding: 0.5em;
+	background-color: $background-color;
+	outline: none;
+	border: 2px solid $main-color;
+}
+
+button, input, table, fieldset {
+	border-radius: 0.25em;
 }
 
 :global { // Don't generate css-modules for these selectors
