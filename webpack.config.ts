@@ -2,19 +2,14 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
 import packageJSON from './package.json'
-
-const srcResolve = (dir: string) => path.join(__dirname, 'src', dir)
+import tsConfig from './tsconfig.json'
+import { getFolders } from './src/utils/webpack'
 
 const config: webpack.Configuration = {
 	entry: './src/index.tsx',
 
 	resolve: {
-		alias: {
-			actions: srcResolve('actions'),
-			components: srcResolve('components'),
-			reducers: srcResolve('reducers'),
-			styles: srcResolve('styles')
-		},
+		alias: getFolders(path.join(__dirname, tsConfig.compilerOptions.baseUrl)),
 		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
 	},
 
