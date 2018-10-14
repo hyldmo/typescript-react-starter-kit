@@ -1,11 +1,12 @@
+import { Actions } from 'actions'
 import React from 'react'
-import { hot } from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import configureStore, { history } from '../../configureStore'
 import App from './App'
 
 const store = configureStore()
+store.dispatch(Actions.loadSave())
 
 type State = {
 	error: Error | null
@@ -23,6 +24,8 @@ class Root extends React.Component<{}, State> {
 	}
 
 	componentDidCatch (error: Error, info: React.ErrorInfo) {
+		// tslint:disable-next-line:no-console
+		console.warn(info)
 		require('./App.lazybundle')(({ RedBox }: any) => {
 			this.RedBoxConstructor = RedBox.default
 			this.setState({ error })
@@ -44,4 +47,4 @@ class Root extends React.Component<{}, State> {
 	}
 }
 
-export default hot(module)(Root)
+export default Root

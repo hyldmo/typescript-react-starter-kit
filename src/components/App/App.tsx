@@ -1,30 +1,25 @@
-import Footer from 'components/Footer'
-import Home from 'components/Home'
-import Navbar from 'components/Navbar'
-import NotFound from 'components/NotFound'
+import { About, Home, NotFound, Tracker } from 'components/Routes'
 import React from 'react'
+import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router'
-
-import Version from 'components/Version'
+import Footer from './Footer'
+import Navbar from './Navbar'
 
 import './App.scss'
 
 const App: React.StatelessComponent = () => (
 	<>
-	<Navbar />
-	<main>
-		<Switch>
-			<Route exact
-				path="/"
-				component={Home} />
-			<Route exact
-				path="/version"
-				component={Version} />
-			<Route component={NotFound} />
-		</Switch>
-	</main>
-	<Footer />
+		<Navbar/>
+		<main>
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/tracker" component={Tracker} />
+				<Route exact path="/about" component={About} />
+				<Route component={NotFound}/>
+			</Switch>
+		</main>
+		<Footer />
 	</>
 )
 
-export default App
+export default hot(module)(App)

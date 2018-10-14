@@ -1,7 +1,7 @@
 {
     "extends": [
         "tslint-eslint-rules",
-        "tslint:recommended"
+        "tslint:latest"
     ],
     "rules": {
         "array-bracket-spacing": [true, "never"],
@@ -27,7 +27,9 @@
         "member-access": false,
         "no-consecutive-blank-lines": [true, 1],
         "no-console": [true],
+        "no-implicit-dependencies": false,
         "no-internal-module": true,
+        "no-submodule-imports": false,
         "no-trailing-whitespace": true,
         "no-unsafe-finally": true,
         "no-var-keyword": true,

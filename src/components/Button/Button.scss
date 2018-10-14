@@ -1,0 +1,13 @@
+@import "styles/variables";
+
+.button {
+	cursor: pointer;
+
+	&:hover, &:focus {
+		background-color: transparentize($main-color, 0.9);
+	}
+
+	&.active {
+		background-color: transparentize($main-color, 0.8);
+	}
+}
