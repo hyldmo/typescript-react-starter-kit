@@ -2,8 +2,8 @@ import { Actions } from 'actions'
 import Button, { ButtonBar } from 'components/Button'
 import React from 'react'
 import { connect } from 'react-redux'
-import { Activity, State as ReduxState } from 'types'
-import { range } from 'utils'
+import { Activity, Omit, State as ReduxState } from 'types'
+import { activitySchema, Joi, range } from 'utils'
 import MultiSessionSchedule from './MultiSessionSchedule'
 import SingleSessionSchedule from './SingleSessionSchedule'
 
@@ -19,12 +19,16 @@ type State = {
 	sessionsPerWeek: string
 }
 
+const initialForm: Omit<State, 'currentActivity'> = {
+	name: '',
+	max: '',
+	intervalsPerSession: '',
+	sessionsPerWeek: ''
+}
+
 class Tracker extends React.Component<Props, State> {
 	state: State = {
-		name: '',
-		max: '',
-		intervalsPerSession: '',
-		sessionsPerWeek: '',
+		...initialForm,
 		currentActivity: null
 	}
 
@@ -37,7 +41,13 @@ class Tracker extends React.Component<Props, State> {
 			intervalsPerSession: Number.parseInt(intervalsPerSession, 10),
 			sessionsPerWeek: Number.parseInt(sessionsPerWeek, 10)
 		})
-		this.setState({ name: '', max: '' })
+		this.setState(initialForm)
+	}
+
+	onInputChange = (name: keyof State) => (e: React.ChangeEvent<HTMLInputElement>) => {
+		// Have to cast here as { [name] } construct widens the keyof type to string
+		// tslint:disable-next-line:no-object-literal-type-assertion
+		this.setState({ [name]: e.target.value } as Pick<State, typeof name>)
 	}
 
 	render () {
@@ -51,11 +61,11 @@ class Tracker extends React.Component<Props, State> {
 				<h1>Tracker</h1>
 				<fieldset>
 					<legend>Add activity</legend>
-					<input type="text" value={name} onChange={e => this.setState({ name: e.target.value })} placeholder="Activity name" />
-					<input type="number" value={max} onChange={e => this.setState({ max: e.target.value })} placeholder="Current record"/>
-					<input type="number" value={intervalsPerSession} onChange={e => this.setState({ intervalsPerSession: e.target.value })} placeholder="Intervals per session"/>
-					<input type="number" value={sessionsPerWeek} onChange={e => this.setState({ sessionsPerWeek: e.target.value })} placeholder="Sessions per week"/>
-					<Button onClick={this.addActivity} disabled={Number.isNaN(Number.parseFloat(max))}>Add</Button>
+					<input name="name" type="text" value={name} onChange={this.onInputChange('name')} placeholder="Activity name" />
+					<input name="max" type="number" value={max} onChange={this.onInputChange('max')} placeholder="Current record"/>
+					<input name="intervalsPerSession" type="number" value={intervalsPerSession} onChange={this.onInputChange('intervalsPerSession')} placeholder="Intervals per session"/>
+					<input name="sessionsPerWeek" type="number" value={sessionsPerWeek} onChange={this.onInputChange('sessionsPerWeek')} placeholder="Sessions per week"/>
+					<Button onClick={this.addActivity} disabled={Joi.validate(this.state, activitySchema, { allowUnknown: true }).error !== null}>Add</Button>
 				</fieldset>
 				{activities.length > 1 && <>
 					<h2>Activity</h2>
