@@ -9,7 +9,7 @@ script:
   - yarn stylelint
   - yarn test:cover
   - yarn dev & wait-on http://localhost:1337
-  - yarn test:e2e
+  - yarn test:e2e --record --key 5511ac18-4b91-469c-819b-09c0ab7ce8af
   - yarn prod
 
 notifications:

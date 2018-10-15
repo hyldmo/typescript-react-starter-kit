@@ -1,5 +1,6 @@
 export * from './actionCreator'
 export * from './calculateSet'
+export * from './validate'
 
 /**
  * Converts strings from snake case to camel case
