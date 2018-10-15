@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
+import jestConfig from './jest.config.js'
 import packageJSON from './package.json'
 const HashAllModulesPlugin = require('hash-all-modules-plugin')
 import { getFolders } from './src/utils/webpack'
@@ -11,7 +12,7 @@ const config: webpack.Configuration = {
 
 	resolve: {
 		alias: getFolders(path.join(__dirname, tsConfig.compilerOptions.baseUrl)),
-		extensions: packageJSON.jest.moduleFileExtensions.map(ext => `.${ext}`)
+		extensions: jestConfig.moduleFileExtensions.map(ext => `.${ext}`)
 	},
 
 	module: {

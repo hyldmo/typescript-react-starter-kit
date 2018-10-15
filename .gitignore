@@ -4,7 +4,7 @@ node_modules
 *.log
 dist/
 package-lock.json
-webpack.*.js
 compilation-stats.json
-
+cypress/videos/
 src/**/*.scss.d.ts
+

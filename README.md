@@ -16,13 +16,13 @@ This repository showcases a bunch of different technologies and frameworks that 
 - [React](https://reactjs.org/)
 - [React Router](https://reacttraining.com/react-router/)
 - [Redux](https://redux.js.org/) + [Redux Saga](https://redux-saga.js.org/)
-- [Jest](https://facebook.github.io/jest/) (with TS support) for unit/snapshot testing
+- [Cypress](https://www.cypress.io/) for end-to-end testing
+- [Jest](https://facebook.github.io/jest/) for unit/snapshot testing
 - Code coverage from [coveralls.io](https://coveralls.io/)
 - [Webpack](https://webpack.js.org/)
   - Hot Module Reloading
   - Bundle hashing to allow for easy caching (npm dependencies are also splitted so that you can update your source code without making the user reload the vendor bundle)
 - [SCSS](https://sass-lang.com/) support
-- [CSS Modules](https://github.com/css-modules/css-modules) for CSS namespacing
 - Autoprefixing with [PostCSS](http://postcss.org/)
 - [Stylelint](https://stylelint.io/) for linting SCSS/CSS
 - [Travis](https://travis-ci.org/) for CI
