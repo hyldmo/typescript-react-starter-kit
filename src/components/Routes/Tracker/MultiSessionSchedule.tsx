@@ -19,7 +19,7 @@ export default class MultiSessionSchedule extends React.PureComponent<Props, Sta
 	render () {
 		const { activity, weeks } = this.props
 		const { activeWeek } = this.state
-		const days = range(1, activity.sessionsPerWeek)
+		const sessions = range(1, activity.sessionsPerWeek)
 		const sets = range(1, activity.intervalsPerSession)
 		return (
 			<>
@@ -32,8 +32,8 @@ export default class MultiSessionSchedule extends React.PureComponent<Props, Sta
 					<thead>
 						<tr>
 							<th>{activity.name}</th>
-							{days.map(day =>
-								<th key={day}>Day {day}</th>
+							{sessions.map(day =>
+								<th key={day}>Session {day}</th>
 							)}
 						</tr>
 					</thead>
@@ -41,14 +41,14 @@ export default class MultiSessionSchedule extends React.PureComponent<Props, Sta
 						{sets.map(set =>
 							<tr key={set}>
 								<th>Set {set}</th>
-								{days.map(day => (
+								{sessions.map(day => (
 									<td key={day}>{calculateSet(activity, day, set, activeWeek).total}</td>
 								))}
 							</tr>
 						)}
 						<tr>
 							<th>Total</th>
-							{days.map(day => (
+							{sessions.map(day => (
 								<td key={day}>{sets.reduce((a, set) => a + calculateSet(activity, day, set, activeWeek).total, 0)}</td>
 							))}
 						</tr>
