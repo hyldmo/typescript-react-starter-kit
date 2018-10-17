@@ -81,11 +81,11 @@ async function diffImages () {
 			if (image !== undefined) {
 				const currentImg = image
 					.pipe(new PNG())
-					.on('parsed', () => {
+					.on('parsed', async () => {
 						const diff = new PNG({ width: currentImg.width, height: currentImg.height })
 						pixelmatch(currentImg.data, newImg, diff.data, diff.width, diff.height)
 
-						BlockBlobURL
+						await BlockBlobURL
 							.fromContainerURL(containerURL, `${currentBranch}/PR/${targetBranch}/${file}`)
 							.upload(Aborter.none, diff.data, diff.data.length)
 					})
@@ -97,7 +97,9 @@ async function diffImages () {
 
 async function run () {
 	await upload()
+	console.info(`TRAVIS_PULL_REQUEST=${process.env.TRAVIS_PULL_REQUEST}`)
 	if (process.env.TRAVIS_PULL_REQUEST !== 'false') {
+		console.info(`PR detected, diffing screenshots from ${targetBranch}`)
 		diffImages()
 	}
 }
