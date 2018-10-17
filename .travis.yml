@@ -10,6 +10,7 @@ script:
   - yarn test:cover
   - yarn dev & wait-on http://localhost:1337
   - yarn test:e2e --record --key $CYPRESS_KEY
+  - yarn test:upload
   - yarn prod
 
 notifications:
