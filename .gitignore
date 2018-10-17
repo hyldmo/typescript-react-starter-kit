@@ -6,5 +6,7 @@ dist/
 package-lock.json
 compilation-stats.json
 cypress/videos/
+cypress/screenshots/
 src/**/*.scss.d.ts
+
 

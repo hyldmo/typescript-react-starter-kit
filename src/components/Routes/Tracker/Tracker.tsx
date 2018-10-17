@@ -1,4 +1,5 @@
 import { Actions } from 'actions'
+import cn from 'classnames'
 import Button, { ButtonBar } from 'components/Button'
 import React from 'react'
 import { connect } from 'react-redux'
@@ -57,14 +58,26 @@ class Tracker extends React.Component<Props, State> {
 		const currentActivity = activities.find(a => a.name === this.state.currentActivity) || activities[0]
 		const weeks = range(1, 8)
 		return (
-			<div className="tracker">
-				<h1>Tracker</h1>
-				<fieldset>
+			<div className={cn('tracker', { empty: activities.length === 0 })}>
+				<h1>Exercise Tracker</h1>
+				<fieldset className="add-activity">
 					<legend>Add activity</legend>
-					<input name="name" type="text" value={name} onChange={this.onInputChange('name')} placeholder="Activity name" />
-					<input name="max" type="number" value={max} onChange={this.onInputChange('max')} placeholder="Current record"/>
-					<input name="intervalsPerSession" type="number" value={intervalsPerSession} onChange={this.onInputChange('intervalsPerSession')} placeholder="Intervals per session"/>
-					<input name="sessionsPerWeek" type="number" value={sessionsPerWeek} onChange={this.onInputChange('sessionsPerWeek')} placeholder="Sessions per week"/>
+					<label>
+						The name of the activity
+						<input name="name" type="text" value={name} onChange={this.onInputChange('name')} placeholder="Name" />
+					</label>
+					<label>
+						Your current record (e.g 50 if you can do max 50 situps in a row)
+						<input name="max" type="number" value={max} onChange={this.onInputChange('max')} placeholder="Record"/>
+					</label>
+					<label>
+						The amount of intervals you want to do per exercise session
+						<input name="intervalsPerSession" type="number" value={intervalsPerSession} onChange={this.onInputChange('intervalsPerSession')} placeholder="Intervals"/>
+					</label>
+					<label>
+						Amount of sessions per week
+						<input name="sessionsPerWeek" type="number" value={sessionsPerWeek} onChange={this.onInputChange('sessionsPerWeek')} placeholder="Sessions"/>
+					</label>
 					<Button onClick={this.addActivity} disabled={Joi.validate(this.state, activitySchema, { allowUnknown: true }).error !== null}>Add</Button>
 				</fieldset>
 				{activities.length > 1 && <>

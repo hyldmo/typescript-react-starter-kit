@@ -1,6 +1,18 @@
 @import "styles/variables.scss";
 
 .tracker {
+	.add-activity {
+		transition: max-height 0.3s ease-in-out;
+		max-height: 1.5em;
+		overflow: hidden;
+		&:hover, &:focus-within {
+			max-height: 50em;
+		}
+	}
+	&.empty .add-activity {
+		max-height: 50em;
+	}
+
 	table {
 		border: 1px solid $main-color;
 		border-collapse: collapse;
@@ -10,5 +22,14 @@
 			padding: 0.5em;
 			border: 1px solid $main-color;
 		}
+	}
+
+	label {
+		display: block;
+		input {
+			margin: 0.5rem 0;
+			display: block;
+		}
+		margin-top: 0.5rem;
 	}
 }

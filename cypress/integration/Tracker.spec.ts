@@ -14,6 +14,10 @@ describe('Tracker', () => {
 		cy.get('fieldset button').as('submit')
 	})
 
+	afterEach(() => {
+		cy.screenshot()
+	})
+
 	it('shows the title of the page', () => {
 		cy.get('h1').contains('Tracker')
 	})
