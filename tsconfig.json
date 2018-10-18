@@ -20,6 +20,6 @@
 		"baseUrl": "src"
 	},
 	"include": [
-		"./src/*", "__tests__/utils.test.ts"
+		"./src/*"
 	]
 }
