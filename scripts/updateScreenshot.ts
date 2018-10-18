@@ -4,6 +4,7 @@ import { createReadStream, createWriteStream, ensureDir, ensureFile, lstat, read
 import { join, resolve } from 'path'
 import pixelmatch from 'pixelmatch'
 import { PNG } from 'pngjs'
+import { comment } from './updateStatus'
 
 const targetBranch = process.env.TRAVIS_BRANCH
 const currentBranch = process.env.TRAVIS_PULL_REQUEST_BRANCH
@@ -98,11 +99,14 @@ async function run () {
 	const files = await getScreenshots()
 	files.map(upload(container))
 	console.info(`Uploaded screenshots to "/${targetBranch}/"`)
+
 	// tslint:disable-next-line:triple-equals
 	if (process.env.TRAVIS_PULL_REQUEST != 'false') {
 		console.info(`PR detected, diffing screenshots from ${targetBranch}`)
 		await Promise.all(files.map(diffImage(container)))
 		console.info(`Uploaded diffs to "/${currentBranch}/PR/${targetBranch}/"`)
+
+		comment(`${container.url}/${currentBranch}/PR/${targetBranch}`)
 	}
 }
 
