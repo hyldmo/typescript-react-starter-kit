@@ -36,7 +36,7 @@
     },
     "devDependencies": {
         "@azure/storage-blob": "^10.1.0-preview",
-        "@cypress/webpack-preprocessor": "^3.0.0",
+        "@cypress/webpack-preprocessor": "^4.0.0",
         "@types/classnames": "^2.2.6",
         "@types/fs-extra": "^5.0.4",
         "@types/history": "^4.6.0",
