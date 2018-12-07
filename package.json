@@ -60,7 +60,7 @@
         "@types/webpack-env": "^1.13.5",
         "bundle-loader": "^0.5.6",
         "coveralls": "^3.0.0",
-        "css-loader": "^1.0.0",
+        "css-loader": "^2.0.0",
         "cypress": "^3.1.0",
         "fs-extra": "^7.0.0",
         "hash-all-modules-plugin": "^0.2.1",
