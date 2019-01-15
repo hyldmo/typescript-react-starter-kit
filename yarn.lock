@@ -804,9 +804,10 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react-redux@^6.0.1":
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-6.0.6.tgz#87f1d0a6ea901b93fcaf95fa57641ff64079d277"
+"@types/react-redux@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.0.0.tgz#8aaba50fb43739462c40e65e85f96eb8a550d494"
+  integrity sha512-p5/vXqS4+Gq7EYzNv4SMi/yy7cM/BUbZORlPXY6F8wCyo5EfPa3Gpf6CEQX+UtbK5g2mqgERqVYyutzZYKIpaQ==
   dependencies:
     "@types/react" "*"
     redux "^4.0.0"
