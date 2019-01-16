@@ -55,7 +55,7 @@
         "@types/react-router-redux": "^5.0.10",
         "@types/react-test-renderer": "^16.0.0",
         "@types/redux-actions": "^2.2.3",
-        "@types/webpack": "^4.4.9",
+        "@types/webpack": "^4.4.23",
         "@types/webpack-dev-server": "^3.1.0",
         "@types/webpack-env": "^1.13.5",
         "bundle-loader": "^0.5.6",
