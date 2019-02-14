@@ -25,7 +25,7 @@
         "history": "^4.6.3",
         "joi-browser": "^13.4.0",
         "normalize.css": "^8.0.0",
-        "react": "~16.7.0",
+        "react": "~16.8.2",
         "react-dom": "~16.7.0",
         "react-redux": "^5.0.6",
         "react-router": "^4.2.0",
