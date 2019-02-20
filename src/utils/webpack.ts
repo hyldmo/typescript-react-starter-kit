@@ -18,3 +18,12 @@ export function getFolders (path: string): Record<string, string> {
 			return a
 		}, {})
 }
+
+/**
+ * Created a path for webpack output file names
+ * @param type File type
+ * @param chunk Whether filename should inclue chunk or not
+ */
+export function makePath  (type: 'js' | 'css', chunk?: boolean) {
+	return `static/${type}/[name]-[contenthash]${chunk ? '.chunk.' : '.'}${type}`
+}

@@ -6,9 +6,8 @@
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
 		"downlevelIteration": true,
-		"allowJs": true,
-		"checkJs": true,
-		"module": "commonjs",
+		"module": "esnext",
+		"moduleResolution": "node",
 		"target": "es5",
 		"lib": [
 			"dom",
