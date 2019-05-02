@@ -22,9 +22,9 @@ This repository showcases a bunch of different technologies and frameworks that 
 - [Webpack](https://webpack.js.org/)
   - Hot Module Reloading
   - Bundle hashing to allow for easy caching (npm dependencies are also splitted so that you can update your source code without making the user reload the vendor bundle)
-- [SCSS](https://sass-lang.com/) support
+- [less](http://lesscss.org/) support
 - Autoprefixing with [PostCSS](http://postcss.org/)
-- [Stylelint](https://stylelint.io/) for linting SCSS/CSS
+- [Stylelint](https://stylelint.io/) for linting less/CSS
 - [Travis](https://travis-ci.org/) for CI
 - [Bundle-Loader](https://www.npmjs.com/package/bundle-loader) for chunking lazy-loaded dependencies out of your main bundle. Example usage at the [official documentation](https://webpack.js.org/loaders/bundle-loader/), practical usage can be found in [Root.tsx](src/components/App/Root.tsx#L26).
 - [Long-term production asset caching](https://webpack.js.org/guides/caching/) in the back of [hash-all-modules-plugin](https://www.npmjs.com/package/hash-all-modules-plugin) and content hashes.

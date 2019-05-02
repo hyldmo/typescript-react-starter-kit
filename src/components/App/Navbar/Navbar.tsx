@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './navbar.scss'
+import './navbar.less'
 
 const Navbar: React.StatelessComponent = () => {
 	return (

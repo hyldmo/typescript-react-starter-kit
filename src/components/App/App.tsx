@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router'
 import Footer from './Footer'
 import Navbar from './Navbar'
 
-import './App.scss'
+import './App.less'
 
 const App: React.StatelessComponent = () => (
 	<>

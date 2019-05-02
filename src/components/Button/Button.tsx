@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import * as React from 'react'
 
-import './Button.scss'
+import './Button.less'
 
 interface Props extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
 	active?: boolean
