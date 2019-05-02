@@ -8,7 +8,7 @@ import { activitySchema, Joi, range } from 'utils'
 import MultiSessionSchedule from './MultiSessionSchedule'
 import SingleSessionSchedule from './SingleSessionSchedule'
 
-import './Tracker.scss'
+import './Tracker.less'
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 
