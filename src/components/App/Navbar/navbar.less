@@ -1,18 +1,18 @@
-@import "~styles/variables.scss";
+@import "~styles/variables.less";
 
 header {
 	grid-area: nav;
 	border-bottom: 1px solid #e9e9e9;
 
 	display: grid;
-	grid-template-columns: $grid-columns;
+	grid-template-columns: @grid-columns;
 
 	nav {
-		grid-column: 2 / 3;
+		grid-column: ~"2 / 3";
 
 		ul {
 			list-style: none;
-			margin: calc($header-height / 3) 0;
+			margin: calc(@header-height / 3) 0;
 			padding: 0;
 
 			li {

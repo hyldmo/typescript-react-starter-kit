@@ -1,17 +1,20 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import path from 'path'
 import webpack from 'webpack'
-import jestConfig from './jest.config.js'
-import packageJSON from './package.json'
+import jestConfig from '../jest.config.js'
+import packageJSON from '../package.json'
 const HashAllModulesPlugin = require('hash-all-modules-plugin')
-import { getFolders } from './src/utils/webpack'
-import tsConfig from './tsconfig.json'
+import { getFolders } from '../src/utils/webpack'
+import tsConfig from '../tsconfig.json'
+
+const context = path.resolve(__dirname, '../')
 
 const config: webpack.Configuration = {
 	entry: './src/index.tsx',
+	context,
 
 	resolve: {
-		alias: getFolders(path.join(__dirname, tsConfig.compilerOptions.baseUrl)),
+		alias: getFolders(path.join(context, tsConfig.compilerOptions.baseUrl)),
 		extensions: jestConfig.moduleFileExtensions.map(ext => `.${ext}`)
 	},
 
@@ -22,9 +25,9 @@ const config: webpack.Configuration = {
 				loader: 'ts-loader'
 			},
 			{
-				test: /\.scss$/,
+				test: /\.less$/,
 				use: [
-					...['css-loader', 'postcss-loader', 'sass-loader'].map(loader => ({
+					...['css-loader', 'postcss-loader', 'less-loader'].map(loader => ({
 						loader,
 						options: { sourceMap: true }
 					}))

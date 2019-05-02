@@ -1,0 +1,13 @@
+@header-height: 3rem;
+@max-width: 60rem;
+@grid-columns: auto @max-width auto;
+@main-color: #444;
+@background-color: #fff;
+
+@color-main: #108EE9;
+
+.tablet(@rules) {
+	@media (max-width: @max-width) {
+		@rules();
+	}
+}
