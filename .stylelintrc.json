@@ -15,7 +15,6 @@
 				]
 			}
 		],
-		"property-no-unknown": null,
-		"less/dollar-variable-no-missing-interpolation": true
+		"property-no-unknown": null
 	}
 }
