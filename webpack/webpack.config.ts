@@ -25,9 +25,9 @@ const config: webpack.Configuration = {
 				loader: 'ts-loader'
 			},
 			{
-				test: /\.scss$/,
+				test: /\.less$/,
 				use: [
-					...['css-loader', 'postcss-loader', 'sass-loader'].map(loader => ({
+					...['css-loader', 'postcss-loader', 'less-loader'].map(loader => ({
 						loader,
 						options: { sourceMap: true }
 					}))

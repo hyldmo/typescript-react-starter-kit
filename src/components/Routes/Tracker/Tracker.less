@@ -1,4 +1,4 @@
-@import "styles/variables.scss";
+@import "~styles/variables.less";
 
 .tracker {
 	.add-activity {
@@ -14,13 +14,13 @@
 	}
 
 	table {
-		border: 1px solid $main-color;
+		border: 1px solid @main-color;
 		border-collapse: collapse;
 		width: 100%;
 
 		td, th {
 			padding: 0.5em;
-			border: 1px solid $main-color;
+			border: 1px solid @main-color;
 		}
 	}
 

@@ -1,5 +1,5 @@
 @import "~normalize.css";
-@import "./variables.scss";
+@import "./variables.less";
 
 * {
 	box-sizing: border-box;
@@ -12,15 +12,15 @@ html, body {
 
 body {
 	font-family: sans-serif;
-	color: $main-color;
-	background-color: $background-color;
+	color: @main-color;
+	background-color: @background-color;
 }
 
 button, input {
 	padding: 0.5em;
-	background-color: $background-color;
+	background-color: @background-color;
 	outline: none;
-	border: 2px solid $main-color;
+	border: 2px solid @main-color;
 }
 
 button, input, table, fieldset {
@@ -35,10 +35,10 @@ button, input, table, fieldset {
 		"nav  nav    nav"
 		"left main   right"
 		"left footer right";
-	grid-template-rows: $header-height 1fr 4rem;
-	grid-template-columns: $grid-columns;
+	grid-template-rows: @header-height 1fr 4rem;
+	grid-template-columns: @grid-columns;
 
-	@include tablet {
+	.tablet() {
 		grid-template-columns: 0 100% 0;
 	}
 }
