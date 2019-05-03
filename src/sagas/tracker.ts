@@ -1,7 +1,7 @@
+import { Predicate } from '@redux-saga/types'
 import { Action, Actions } from 'actions'
-import { Predicate } from 'redux-saga'
 import { call, put, select, takeLatest  } from 'redux-saga/effects'
-import { State } from 'types'
+import { Selector, State } from 'types'
 import { sleep } from 'utils'
 
 const SAVE_KEY = 'activity_tracker'
@@ -15,7 +15,7 @@ export default function* () {
 
 function* save () {
 	yield call(sleep, 100)
-	const tracker: State['tracker'] = yield select<State>(s => s.tracker)
+	const tracker: State['tracker'] = yield select<Selector<State>>(s => s.tracker)
 	localStorage.setItem(SAVE_KEY, JSON.stringify(tracker))
 }
 
