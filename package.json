@@ -62,7 +62,7 @@
         "coveralls": "^3.0.0",
         "css-loader": "^2.1.0",
         "cypress": "^3.1.0",
-        "env-cmd": "^8.0.2",
+        "env-cmd": "^9.0.0",
         "fs-extra": "^7.0.0",
         "hash-all-modules-plugin": "^0.2.1",
         "html-webpack-plugin": "^3.0.6",
