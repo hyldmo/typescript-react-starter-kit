@@ -6613,11 +6613,12 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pixelmatch@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/pixelmatch/-/pixelmatch-4.0.2.tgz#8f47dcec5011b477b67db03c243bc1f3085e8854"
+pixelmatch@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/pixelmatch/-/pixelmatch-5.0.0.tgz#2954f18dabc22fd7e4402d2e8adb8f339bb653c4"
+  integrity sha512-u/+EYu98QdSwA+Hp9FUtGJiAHLST5kHLfFc393+pRRKm6U/eZjkd3BgHFHyLfKWO9IlAib6Cwy4Sj1UwQkaZVg==
   dependencies:
-    pngjs "^3.0.0"
+    pngjs "^3.4.0"
 
 pkg-dir@^2.0.0:
   version "2.0.0"
@@ -6636,9 +6637,10 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
-pngjs@^3.0.0:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.3.3.tgz#85173703bde3edac8998757b96e5821d0966a21b"
+pngjs@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
+  integrity sha512-NCrCHhWmnQklfH4MtJMRjZ2a8c80qXeMlQMv2uVp9ISJMTt562SbGd6n2oq0PaPgKm7Z6pL9E2UlLIhC+SHL3w==
 
 portfinder@^1.0.9:
   version "1.0.16"
