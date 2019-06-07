@@ -70,7 +70,7 @@
         "less": "^3.9.0",
         "less-loader": "^5.0.0",
         "mini-css-extract-plugin": "^0.4.0",
-        "pixelmatch": "^4.0.2",
+        "pixelmatch": "^5.0.0",
         "postcss": "^7.0.0",
         "postcss-loader": "^3.0.0",
         "react-hot-loader": "^4.7.1",
