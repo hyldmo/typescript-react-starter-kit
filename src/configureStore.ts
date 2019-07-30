@@ -1,5 +1,5 @@
-import createHistory from 'history/createBrowserHistory'
-import { routerMiddleware } from 'react-router-redux'
+import { routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory } from 'history'
 import { applyMiddleware, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { State } from 'types'
@@ -10,14 +10,14 @@ const __DEV__ = process.env.NODE_ENV === 'development'
 
 const sagaMiddleware = createSagaMiddleware()
 
-export const history = createHistory()
+export const history = createBrowserHistory()
 const middlewares = [sagaMiddleware, routerMiddleware(history)]
 
 const composeEnhancers: typeof compose = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export default function configureStore (initialState?: Partial<State>) {
 	const store = createStore(
-		rootReducer,
+		rootReducer(history),
 		initialState || {},
 		composeEnhancers(
 			applyMiddleware(...middlewares)
