@@ -58,7 +58,7 @@
         "@types/webpack-dev-server": "^3.1.5",
         "@types/webpack-env": "^1.13.9",
         "bundle-loader": "^0.5.6",
-        "coveralls": "^3.0.0",
+        "coveralls": "^3.0.6",
         "css-loader": "^3.1.0",
         "cypress": "^3.1.0",
         "env-cmd": "^9.0.3",
