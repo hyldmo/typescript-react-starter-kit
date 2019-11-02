@@ -30,3 +30,5 @@ This repository showcases a bunch of different technologies and frameworks that 
 - [Long-term production asset caching](https://webpack.js.org/guides/caching/) in the back of [hash-all-modules-plugin](https://www.npmjs.com/package/hash-all-modules-plugin) and content hashes.
 
 To get started, run `yarn` to fetch dependencies and `yarn dev` to start the development server
+
+DEMO DEMO
