@@ -35,7 +35,7 @@
         "redux-saga": "^1.0.2"
     },
     "devDependencies": {
-        "@azure/storage-blob": "^10.1.0-preview",
+        "@azure/storage-blob": "^12.0.1",
         "@cypress/webpack-preprocessor": "^4.0.2",
         "@types/classnames": "^2.2.6",
         "@types/fs-extra": "^8.0.0",
