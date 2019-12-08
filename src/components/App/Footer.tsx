@@ -1,7 +1,7 @@
 import React from 'react'
 import { snakeToCamel } from 'utils'
 
-const Footer: React.StatelessComponent = (props) =>  (
+const Footer: React.StatelessComponent = () =>  (
 	<footer>
 		<span>
 			{snakeToCamel(process.env.PACKAGE_NAME as string)}
