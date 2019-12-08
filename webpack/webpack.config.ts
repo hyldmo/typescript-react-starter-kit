@@ -3,8 +3,7 @@ import path from 'path'
 import webpack from 'webpack'
 import jestConfig from '../jest.config.js'
 import packageJSON from '../package.json'
-const HashAllModulesPlugin = require('hash-all-modules-plugin')
-import { getFolders } from '../src/utils/webpack'
+import { getFolders } from './utils'
 import tsConfig from '../tsconfig.json'
 
 const context = path.resolve(__dirname, '../')
@@ -61,8 +60,7 @@ const config: webpack.Configuration = {
 			'process.env.PACKAGE_NAME': JSON.stringify(packageJSON.name),
 			'process.env.PACKAGE_VERSION': JSON.stringify(packageJSON.version)
 		}),
-		new webpack.HashedModuleIdsPlugin(),
-		new HashAllModulesPlugin()
+		new webpack.HashedModuleIdsPlugin()
 	],
 
 	optimization: {

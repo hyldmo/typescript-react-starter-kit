@@ -87,7 +87,7 @@ class Tracker extends React.Component<Props, State> {
 							<Button
 								key={activity.name}
 								active={activity.name === currentActivity.name}
-								onClick={_ => this.setState({ currentActivity: activity.name })}
+								onClick={() => this.setState({ currentActivity: activity.name })}
 							>
 								{activity.name}
 							</Button>

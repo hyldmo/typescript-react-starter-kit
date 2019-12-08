@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Home: React.StatelessComponent = (props) =>  (
+const Home: React.StatelessComponent = () =>  (
 	<div>
 		<h1>Hello world</h1>
 	</div>

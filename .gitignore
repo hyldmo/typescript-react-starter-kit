@@ -8,3 +8,5 @@ compilation-stats.json
 cypress/videos/
 cypress/screenshots/
 src/**/*.less.d.ts
+
+coverage/

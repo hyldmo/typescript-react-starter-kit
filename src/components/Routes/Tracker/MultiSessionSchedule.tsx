@@ -25,7 +25,7 @@ export default class MultiSessionSchedule extends React.PureComponent<Props, Sta
 			<>
 				<ButtonBar>
 					{weeks.map(week => (
-						<Button key={week} active={activeWeek === week} onClick={_ => this.setState({ activeWeek: week })}>Week {week}</Button>
+						<Button key={week} active={activeWeek === week} onClick={() => this.setState({ activeWeek: week })}>Week {week}</Button>
 					))}
 				</ButtonBar>
 				<table>

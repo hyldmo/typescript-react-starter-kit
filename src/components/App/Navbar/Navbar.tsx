@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './navbar.less'
 
-const Navbar: React.StatelessComponent = () => {
-	return (
+const Navbar: React.StatelessComponent = () => (
 		<header>
 			<nav>
 				<ul>
@@ -15,5 +14,4 @@ const Navbar: React.StatelessComponent = () => {
 			</nav>
 		</header>
 	)
-}
 export default Navbar
