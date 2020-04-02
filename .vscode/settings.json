@@ -4,4 +4,7 @@
         ".prettierrc": "json",
         ".env": "ini"
     },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }

@@ -1,12 +1,15 @@
-type Action<T, P = undefined, M = undefined> = { type: T, payload: P, meta: M }
-type EmptyActionCreator<T> =      Action<T>&(() => { type: T })
-type ActionCreator<T, P> =        Action<T, P>&((payload: P) =>  { type: T, payload: P })
-type ActionMetaCreator<T, P, M> = Action<T, P, M>&((payload: P, meta: M) => { type: T, payload: P, meta: M })
+type EmptyAction<T> = { type: T }
 
-export function createAction<T>       (type: T): EmptyActionCreator<T>
-export function createAction<T, P>    (type: T): ActionCreator<T, P>
-export function createAction<T, P, M> (type: T): ActionMetaCreator<T, P, M>
-export function createAction<T, P, M> (type: T): EmptyActionCreator<T>&ActionCreator<T, P>&ActionMetaCreator<T, P, M> {
+type EmptyActionCreator<T> =      (() => EmptyAction<T>)
+type ActionPayloadCreator<T, P> =        ((payload: P) =>  { type: T, payload: P })
+type ActionMetaCreator<T, P, M> = ((payload: P, meta: M) => { type: T, payload: P, meta: M })
+
+type ActionMetaOnlyCreator <T, M> = ((meta: M) => { type: T, meta: M })
+
+export function makeActionCreator<T>       (type: T): EmptyActionCreator<T> & EmptyAction<T>
+export function makeActionCreator<T, P>    (type: T): ActionPayloadCreator<T, P> & EmptyAction<T>
+export function makeActionCreator<T, P, M> (type: T): ActionMetaCreator<T, P, M> & EmptyAction<T>
+export function makeActionCreator<T, P, M> (type: T): EmptyActionCreator<T> & ActionPayloadCreator<T, P> & ActionMetaCreator<T, P, M> & EmptyAction<T> {
 	const action: any = (payload?: P, meta?: M) => ({
 		type,
 		payload,
@@ -15,3 +18,14 @@ export function createAction<T, P, M> (type: T): EmptyActionCreator<T>&ActionCre
 	action.type = type
 	return action
 }
+
+export function makeMetaActionCreator<T, M> (type: T): ActionMetaOnlyCreator<T, M> & EmptyAction<T> {
+	const action: any = (meta: M) => ({
+		type,
+		meta
+	})
+	action.type = type
+	return action
+}
+
+export type GetMetaActions<T> = T extends { meta: any } ? T : never

@@ -1,9 +1,9 @@
 import { TrackerState } from 'reducers/tracker'
 import { Activity } from 'types'
-import { createAction } from 'utils'
+import { makeActionCreator } from 'utils'
 
 export default {
-	addActivity: createAction<'ADD_ACTIVITY', Activity>('ADD_ACTIVITY'),
-	saveLoaded: createAction<'SAVE_LOADED', TrackerState>('SAVE_LOADED'),
-	loadSave: createAction<'SAVE_LOAD'>('SAVE_LOAD')
+	addActivity: makeActionCreator<'ADD_ACTIVITY', Activity>('ADD_ACTIVITY'),
+	saveLoaded: makeActionCreator<'SAVE_LOADED', TrackerState>('SAVE_LOADED'),
+	loadSave: makeActionCreator<'SAVE_LOAD'>('SAVE_LOAD')
 }
