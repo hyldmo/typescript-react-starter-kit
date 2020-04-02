@@ -9,7 +9,7 @@ const config: webpack.Configuration = {
 	...baseConfig,
 
 	output: {
-		path: path.join(__dirname, 'dist'),
+		path: path.join(baseConfig.context, 'dist'),
 		filename: '[name]-[contenthash].js',
 		chunkFilename: '[name]-[contenthash].chunk.js'
 	},
