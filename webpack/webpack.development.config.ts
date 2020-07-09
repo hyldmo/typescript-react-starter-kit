@@ -8,6 +8,14 @@ const config: webpack.Configuration = {
 	mode: 'development',
 	devtool: 'cheap-eval-source-map',
 
+	resolve: {
+		...baseConfig.resolve,
+		alias: {
+			...baseConfig.resolve.alias,
+			'react-dom': '@hot-loader/react-dom'
+		}
+	},
+
 	output: {
 		publicPath: '/',
 		filename: '[name]-[hash].js'
