@@ -1,9 +1,15 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
-        "moduleResolution": "node",
+		"allowJs": true,
+		"jsx": "preserve",
+		"lib": ["dom", "es2017"],
+		"maxNodeModuleJsDepth": 5,
+		"module": "esnext",
+		"allowSyntheticDefaultImports": true,
+		"moduleResolution": "node",
 		"resolveJsonModule": true,
-		"target": "es6",
-		"esModuleInterop": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "esnext"
 	}
 }
