@@ -8,6 +8,7 @@ export const Actions = {
 }
 
 export type ActionCreator = typeof Actions[keyof typeof Actions]
-export type Action = ReturnType<ActionCreator>
+type A = ReturnType<ActionCreator>
+export type Action<TKey extends ActionTypes = any, TAction extends A = A> = TAction extends { type: TKey } ? TAction : never
 export type MetaAction = GetMetaActions<Action>
 export type ActionTypes = Action['type']
