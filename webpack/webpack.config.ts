@@ -31,18 +31,6 @@ const config: webpack.Configuration = {
 						options: { sourceMap: true }
 					}))
 				]
-			},
-			{
-				test: /\.lazybundle\.js$/,
-				use: [
-					{
-						loader: 'bundle-loader',
-						options: {
-							lazy: true,
-							name: '[name]'
-						}
-					}
-				]
 			}
 		]
 	},
