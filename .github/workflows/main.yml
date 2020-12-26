@@ -1,0 +1,46 @@
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  deploy_source:
+    name: Build and test
+    strategy:
+      matrix:
+        node-version: [12.x]
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Lint Typescript
+        run: yarn lint
+
+      - name: Lint CSS
+        run: yarn stylelint
+
+      - name: Run unit tests
+        run: yarn test:cover
+
+      - name: Upload code coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run e2e tests
+        run: |
+          yarn dev & yarn wait-on http://localhost:1337 
+          yarn test:e2e
+
+      - name: Build application 
+        run: yarn prod
