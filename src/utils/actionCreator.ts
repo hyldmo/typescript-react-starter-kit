@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 type EmptyAction<T> = { type: T }
 
 type EmptyActionCreator<T> =      (() => EmptyAction<T>)

@@ -8,6 +8,7 @@ const addActivity = (activity: Partial<Activity>) => {
 }
 
 describe('Tracker', () => {
+	/* TODO: Wait for webpack 5 support https://github.com/cypress-io/cypress/issues/8900
 	beforeEach(() => {
 		cy.clearLocalStorage()
 		cy.visit('/tracker')
@@ -59,4 +60,5 @@ describe('Tracker', () => {
 		cy.get('table').should('exist')
 		cy.get('.buttonbar').should('exist')
 	})
+	*/
 })

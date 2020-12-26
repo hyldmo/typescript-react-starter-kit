@@ -13,7 +13,7 @@ type State = {
 	error: Error | null
 }
 
-class Root extends React.Component<{}, State> {
+class Root extends React.Component<unknown, State> {
 	state: State = {
 		error: null
 	}

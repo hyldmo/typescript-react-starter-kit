@@ -3,7 +3,7 @@ import path from 'path'
 import webpack from 'webpack'
 import baseConfig from './webpack.config'
 
-(baseConfig.module as any).rules[1].use.unshift(MiniCssExtractPlugin.loader)
+((baseConfig.module.rules[1] as webpack.RuleSetRule).use as webpack.RuleSetUseItem[]).unshift(MiniCssExtractPlugin.loader)
 
 const config: webpack.Configuration = {
 	...baseConfig,

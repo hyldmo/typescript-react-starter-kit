@@ -31,18 +31,6 @@ const config: webpack.Configuration = {
 						options: { sourceMap: true }
 					}))
 				]
-			},
-			{
-				test: /\.lazybundle\.js$/,
-				use: [
-					{
-						loader: 'bundle-loader',
-						options: {
-							lazy: true,
-							name: '[name]'
-						}
-					}
-				]
 			}
 		]
 	},
@@ -59,8 +47,7 @@ const config: webpack.Configuration = {
 		new webpack.DefinePlugin({
 			'process.env.PACKAGE_NAME': JSON.stringify(packageJSON.name),
 			'process.env.PACKAGE_VERSION': JSON.stringify(packageJSON.version)
-		}),
-		new webpack.HashedModuleIdsPlugin()
+		})
 	],
 
 	optimization: {

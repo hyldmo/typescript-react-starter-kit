@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './navbar.less'
 
-const Navbar: React.StatelessComponent = () => (
+const Navbar: React.FunctionComponent = () => (
 		<header>
 			<nav>
 				<ul>
