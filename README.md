@@ -1,6 +1,7 @@
 # Typescript React Starter Kit #
 ![.github/workflows/main.yml](https://github.com/hyldmo/typescript-react-starter-kit/workflows/.github/workflows/main.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/hyldmo/typescript-react-starter-kit/badge.svg?branch=master)](https://coveralls.io/github/hyldmo/typescript-react-starter-kit?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b2948fd44e995919bdf7/maintainability)](https://codeclimate.com/github/hyldmo/typescript-react-starter-kit/maintainability)
 [![dependencies Status](https://david-dm.org/hyldmo/typescript-react-starter-kit/status.svg)](https://david-dm.org/hyldmo/typescript-react-starter-kit)
 [![devDependencies Status](https://david-dm.org/hyldmo/typescript-react-starter-kit/dev-status.svg)](https://david-dm.org/hyldmo/typescript-react-starter-kit?type=dev)
 [![Known Vulnerabilities](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit?targetFile=package.json)
