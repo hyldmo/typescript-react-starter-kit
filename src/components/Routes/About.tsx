@@ -5,7 +5,7 @@ import { State } from 'types'
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
 
-const About: React.StatelessComponent<Props> = ({ version, fetchVersion }) => {
+const About: React.FunctionComponent<Props> = ({ version, fetchVersion }) => {
 	useEffect(() => {
 		fetchVersion('https://raw.githubusercontent.com/hyldmo/typescript-react-starter-kit/master/package.json')
 	})

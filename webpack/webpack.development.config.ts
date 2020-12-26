@@ -1,5 +1,6 @@
 ﻿import webpack from 'webpack'
 import baseConfig from './webpack.config'
+import path from 'path'
 
 ((baseConfig.module.rules[1] as webpack.RuleSetRule).use as webpack.RuleSetUseItem[]).unshift('style-loader')
 
@@ -22,10 +23,11 @@ const config: webpack.Configuration = {
 	},
 
 	devServer: {
+		hot: true,
+		compress: true,
 		historyApiFallback: true,
 		port: 1337,
-		overlay: true,
-		stats: baseConfig.stats as any
+		overlay: true
 	}
 }
 
