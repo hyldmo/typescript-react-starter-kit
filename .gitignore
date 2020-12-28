@@ -10,3 +10,10 @@ cypress/screenshots/
 src/**/*.less.d.ts
 
 coverage/
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
