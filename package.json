@@ -39,7 +39,7 @@
         "@cypress/webpack-preprocessor": "^5.4.6",
         "@hot-loader/react-dom": "^16.13.0",
         "@types/classnames": "^2.2.6",
-        "@types/fs-extra": "^8.0.0",
+        "@types/fs-extra": "^9.0.6",
         "@types/history": "^4.7.2",
         "@types/joi": "^14.0.0",
         "@types/mini-css-extract-plugin": "latest",
