@@ -1,4 +1,3 @@
-import { Predicate } from '@redux-saga/types'
 import { Action, Actions } from 'actions'
 import { call, put, select, takeLatest  } from 'redux-saga/effects'
 import { Selector, State } from 'types'
@@ -6,10 +5,10 @@ import { sleep } from 'utils'
 
 const SAVE_KEY = 'activity_tracker'
 
-const predicate: Predicate<Action> = (a: Action) => a.type.includes('ACTIVITY')
+const predicate = (a: Action) => a.type.includes('ACTIVITY')
 
 export default function* () {
-	yield takeLatest<Action>(predicate as any, save)
+	yield takeLatest<Action>(predicate, save)
 	yield takeLatest('SAVE_LOAD', load)
 }
 
