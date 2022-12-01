@@ -1508,12 +1508,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-test-renderer@npm:^16.9.1":
-  version: 16.9.1
-  resolution: "@types/react-test-renderer@npm:16.9.1"
+"@types/react-test-renderer@npm:^18.0.0":
+  version: 18.0.0
+  resolution: "@types/react-test-renderer@npm:18.0.0"
   dependencies:
     "@types/react": "*"
-  checksum: 811b5075dea83d750c831acf70e1734b081468eeb0b4f5d720edf5e83f448f9e8ad8d803e5ac0c7d6a60b44eb1e2816532957507e85be0845ed2686e994621cf
+  checksum: 5233bb6f4a872f79bc27a3c242fce8cb9f60e9b2f09356db4f75925b574bb11365f61fb59a65633f11a3c1c94a7f5f6aae96074c44bcb750f347d0e3c5c5fa89
   languageName: node
   linkType: hard
 
@@ -9254,7 +9254,14 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.6.0, react-is@npm:^16.7.0, react-is@npm:^16.8.1, react-is@npm:^16.8.6, react-is@npm:^16.9.0":
+"react-is@npm:^16.12.0 || ^17.0.0 || ^18.0.0, react-is@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-is@npm:18.2.0"
+  checksum: ba56d25c9fb64fb0676f9613807e22fbcd8d67a3ce155621adbc7d9f5d81ce125ebd0738a2d3b9162a9d793e4787826f140fddcf0e6a0518716435f7627c6468
+  languageName: node
+  linkType: hard
+
+"react-is@npm:^16.6.0, react-is@npm:^16.7.0, react-is@npm:^16.8.1, react-is@npm:^16.9.0":
   version: 16.12.0
   resolution: "react-is@npm:16.12.0"
   checksum: ddcafd1c3f37118880c7d21720d8481842b1cda8f2724d81a1c103919c5764a697fefd65451396d47ac634ea7850df7829ef0b1094a84b1d18fbfa0c9400b7c9
@@ -9333,17 +9340,28 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"react-test-renderer@npm:^16.12.0":
-  version: 16.12.0
-  resolution: "react-test-renderer@npm:16.12.0"
+"react-shallow-renderer@npm:^16.15.0":
+  version: 16.15.0
+  resolution: "react-shallow-renderer@npm:16.15.0"
   dependencies:
     object-assign: ^4.1.1
-    prop-types: ^15.6.2
-    react-is: ^16.8.6
-    scheduler: ^0.18.0
+    react-is: ^16.12.0 || ^17.0.0 || ^18.0.0
   peerDependencies:
-    react: ^16.0.0
-  checksum: aef76cd2d5ee13a5d06a885daece78dd571d5c5a63c3f59050b3c7239b7664ee4ad502a7e6ce85c697e03def5466c3010fe48814736a66ed7f616aa8b70406d1
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: aee13814b623f9e535fc588a8f0925c192a08c5f6250a13dfc80f36358c4ef0507d3a3afd5ecdc3e857b68ec405a9eb3f3a0c0bcbb748f448ee77694dafef2ff
+  languageName: node
+  linkType: hard
+
+"react-test-renderer@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-test-renderer@npm:18.2.0"
+  dependencies:
+    react-is: ^18.2.0
+    react-shallow-renderer: ^16.15.0
+    scheduler: ^0.23.0
+  peerDependencies:
+    react: ^18.2.0
+  checksum: 6883b841e729a498e1a6b78e613ad1bb6fce84d889b8fd049fd0560f2d3a0decb86c7672b30985ee2c6e306537057c4c6446aa63885c7f61c1fae51b38526575
   languageName: node
   linkType: hard
 
@@ -9974,16 +9992,6 @@ fsevents@^2.1.2:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.18.0":
-  version: 0.18.0
-  resolution: "scheduler@npm:0.18.0"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: 007678c559669029a5f8a029022548c2f39258b8087d1da0a3f5c5360abf3aa2794a87f56998151432f48910eca53331206cd712b751188623ca3d1bcab38b9f
-  languageName: node
-  linkType: hard
-
 "scheduler@npm:^0.19.0, scheduler@npm:^0.19.1":
   version: 0.19.1
   resolution: "scheduler@npm:0.19.1"
@@ -9991,6 +9999,15 @@ fsevents@^2.1.2:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: 804f990b9f370cca6d42b65f3cba2cc2bfed4973ee5623bed1ea36a6627842db8c891e2e5ac003f06f9ee892d1d3396921e27fa077346caf0213af05776e8dee
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
+  dependencies:
+    loose-envify: ^1.1.0
+  checksum: 90503d55dca0e608591b8a38c3b9858438805caa198745b36b56594dd0a3ef0d5ae4b2aefaacb8b24664959dc4363dff84aa002cdfd07dfbd2dfafcf7b31b873
   languageName: node
   linkType: hard
 
@@ -11412,7 +11429,7 @@ fsevents@^2.1.2:
     "@types/react-redux": ^7.1.1
     "@types/react-router": ^5.0.3
     "@types/react-router-dom": ^4.3.4
-    "@types/react-test-renderer": ^16.9.1
+    "@types/react-test-renderer": ^18.0.0
     "@types/redux-actions": ^2.2.3
     "@types/webpack-dev-server": ^3.11.1
     "@types/webpack-env": ^1.16.0
@@ -11444,7 +11461,7 @@ fsevents@^2.1.2:
     react-redux: ^7.2.0
     react-router: ^5.1.2
     react-router-dom: ^5.1.2
-    react-test-renderer: ^16.12.0
+    react-test-renderer: ^18.2.0
     redbox-react: ^1.5.0
     redux: ^4.0.0
     redux-saga: ^1.0.2
