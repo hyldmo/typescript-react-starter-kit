@@ -1,0 +1,15 @@
+{
+  // Plain Worker + Static Assets (the current Cloudflare model — not Pages).
+  // /api/* is a stub slot for a future API; everything else falls through to
+  // the Vite build in ../dist via the ASSETS binding (SPA fallback).
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "typescript-react-starter-kit",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "../dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  }
+}

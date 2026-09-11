@@ -1,6 +1,7 @@
+import { describe, expect, it } from 'vitest'
 import { range } from '../src/utils'
 
-describe(range, () => {
+describe('range', () => {
 	it('When first parameter is provided creates a range from 0 to n', () => {
 		const result = range(5)
 		expect(result).toEqual([0, 1, 2, 3, 4, 5])

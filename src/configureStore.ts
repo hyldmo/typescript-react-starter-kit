@@ -1,45 +1,21 @@
-import { routerMiddleware } from 'connected-react-router'
-import { createBrowserHistory } from 'history'
-import { applyMiddleware, compose, createStore } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
+import { useDispatch, useSelector } from 'react-redux'
 import createSagaMiddleware from 'redux-saga'
-import { State } from 'types'
 import rootReducer from './reducers'
-import SagaManager from './sagas/SagaManager'
-
-const __DEV__ = process.env.NODE_ENV === 'development'
+import { loadSave } from './reducers/tracker'
+import rootSaga from './sagas/SagaManager'
 
 const sagaMiddleware = createSagaMiddleware()
 
-export const history = createBrowserHistory()
-const middlewares = [sagaMiddleware, routerMiddleware(history)]
+export const store = configureStore({
+	reducer: rootReducer,
+	middleware: getDefaultMiddleware => getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware)
+})
 
-const composeEnhancers: typeof compose = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export type State = ReturnType<typeof rootReducer>
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export const useAppSelector = useSelector.withTypes<State>()
 
-export default function configureStore (initialState?: Partial<State>) {
-	const store = createStore(
-		rootReducer(history),
-		initialState || {},
-		composeEnhancers(
-			applyMiddleware(...middlewares)
-		)
-	)
-
-	// run sagas
-	SagaManager.startSagas(sagaMiddleware)
-
-	if (__DEV__ && module.hot) {
-		// Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
-		module.hot.accept('./reducers', async () => {
-			const reducers = await import('./reducers')
-			store.replaceReducer(reducers.default as any)
-		})
-
-		module.hot.accept('./sagas/SagaManager', async () => {
-			const newSagaManager = await import('./sagas/SagaManager')
-			SagaManager.cancelSagas(store)
-			newSagaManager.default.startSagas(sagaMiddleware)
-		})
-	}
-
-	return store
-}
+sagaMiddleware.run(rootSaga)
+store.dispatch(loadSave())

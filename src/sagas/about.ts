@@ -1,12 +1,12 @@
-import { Action, Actions } from 'actions'
-import { call, put, takeEvery  } from 'redux-saga/effects'
+import { call, put, takeEvery } from 'typed-redux-saga'
+import { fetchVersion, versionFetched } from '../reducers/version'
 
-export default function* () {
-	yield takeEvery('FETCH_VERSION', fetchVersion)
+export default function* aboutSaga() {
+	yield* takeEvery(fetchVersion.type, fetchVersionSaga)
 }
 
-function* fetchVersion (action: Action<'FETCH_VERSION'>) {
-	const response: Response = yield call(fetch, action.payload)
-	const body = yield response.json()
-	yield put(Actions.versionFetched(body.version))
+function* fetchVersionSaga(action: ReturnType<typeof fetchVersion>) {
+	const response: Response = yield* call(fetch, action.payload)
+	const body: { version: string } = yield* call([response, 'json'])
+	yield* put(versionFetched(body.version))
 }

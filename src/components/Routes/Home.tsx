@@ -1,8 +1,8 @@
-import React from 'react'
+import type { FC } from 'react'
 
-const Home: React.FunctionComponent = () =>  (
+const Home: FC = () => (
 	<div>
-		<h1>Hello world</h1>
+		<h1 className="font-bold text-2xl">Hello world</h1>
 	</div>
 )
 

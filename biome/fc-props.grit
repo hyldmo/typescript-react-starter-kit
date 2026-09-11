@@ -1,0 +1,11 @@
+language js(typescript, jsx)
+
+// Slate convention (CLAUDE.md § FC prop interfaces): declare FC props as a named interface
+// (`interface FooProps { ... }`), not an inline object type (`FC<{ a: string }>` or
+// `FC<PropsWithChildren<{ a: string }>>`). For children, use `FC<PropsWithChildren>` or
+// `interface FooProps extends PropsWithChildren { ... }` + `FC<FooProps>`.
+// Scoped alongside component-decl.grit (excludes generated shadcn ui/ and the charts/ toolkit).
+TsObjectType() as $obj where {
+	or { $obj <: within `FC<$obj>` , $obj <: within `FC<PropsWithChildren<$obj>>` },
+	register_diagnostic(span=$obj, message="Extract FC props into a named interface (CLAUDE.md § FC prop interfaces). E.g. `interface FooProps { ... }` then `const Foo: FC<FooProps> = ...`; for children use `extends PropsWithChildren`.", severity="error")
+}

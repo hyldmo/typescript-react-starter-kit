@@ -1,7 +1,7 @@
-import { Action } from 'actions'
-import { Activity } from 'types/tracker'
+import { createAction, createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import type { Activity } from '~/types/tracker'
 
-export type TrackerState = {
+export interface TrackerState {
 	activities: Activity[]
 }
 
@@ -9,18 +9,19 @@ const initialState: TrackerState = {
 	activities: []
 }
 
-export default function (state: TrackerState = initialState, action: Action): TrackerState {
-	switch (action.type) {
-		case 'ADD_ACTIVITY':
-			return {
-				...state,
-				activities: [...state.activities, action.payload]
-			}
+// Saga trigger: reload the persisted tracker from localStorage.
+export const loadSave = createAction('tracker/loadSave')
 
-		case 'SAVE_LOADED':
-			return action.payload
-
-		default:
-			return state
+const trackerSlice = createSlice({
+	name: 'tracker',
+	initialState,
+	reducers: {
+		addActivity: (state, action: PayloadAction<Activity>) => {
+			state.activities.push(action.payload)
+		},
+		saveLoaded: (_state, action: PayloadAction<TrackerState>) => action.payload
 	}
-}
+})
+
+export const { addActivity, saveLoaded } = trackerSlice.actions
+export default trackerSlice.reducer

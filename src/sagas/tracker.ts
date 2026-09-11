@@ -1,25 +1,25 @@
-import { Action, Actions } from 'actions'
-import { call, put, select, takeLatest  } from 'redux-saga/effects'
-import { Selector, State } from 'types'
-import { sleep } from 'utils'
+import { call, put, select, takeLatest } from 'typed-redux-saga'
+import { addActivity, loadSave, saveLoaded } from '../reducers/tracker'
+import type { State } from '../types'
+import { sleep, trackerSchema } from '../utils'
 
 const SAVE_KEY = 'activity_tracker'
 
-const predicate = (a: Action) => a.type.includes('ACTIVITY')
-
-export default function* () {
-	yield takeLatest<Action>(predicate, save)
-	yield takeLatest('SAVE_LOAD', load)
+export default function* trackerSaga() {
+	yield* takeLatest(addActivity.type, save)
+	yield* takeLatest(loadSave.type, load)
 }
 
-function* save () {
-	yield call(sleep, 100)
-	const tracker: State['tracker'] = yield select<Selector<State>>(s => s.tracker)
+function* save() {
+	yield* call(sleep, 100)
+	const tracker = yield* select((s: State) => s.tracker)
 	localStorage.setItem(SAVE_KEY, JSON.stringify(tracker))
 }
 
-function* load () {
+function* load() {
 	const saveState = localStorage.getItem(SAVE_KEY)
-	if (saveState)
-		yield put(Actions.saveLoaded(JSON.parse(saveState)))
+	if (saveState) {
+		const parsed = trackerSchema.safeParse(JSON.parse(saveState))
+		if (parsed.success) yield* put(saveLoaded(parsed.data))
+	}
 }

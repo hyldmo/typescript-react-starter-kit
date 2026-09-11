@@ -1,0 +1,29 @@
+language js(typescript, jsx)
+
+// Slate convention (CLAUDE.md): "Never cast types." Prefer TypeID branded types + real narrowing over
+// `as`, which silently bypasses the checker — the #1 way a wrong id or shape slips through unnoticed.
+// This is an ERROR (CI-blocking), not a warning: a cast that's genuinely needed must be made explicit
+// with a `// biome-ignore` saying WHY, not left to rot as an ignorable warning.
+//
+// Deliberately NOT flagged here:
+//   - `as const` — a const assertion (narrows to literals), NOT a type cast. Exempted below.
+//   - import/export aliases (`import { X as Y }`, `import type { X as Y, Z }`) — the snippet `$expr as
+//     $type` also matches rename specifiers, not just casts. Two `not within` clauses drop them: the bare
+//     `import …` form covers default + single-specifier (incl. `import type { X as Y }`); the `{ $a as $b,
+//     $rest }` form covers multi-specifier named import/export lists, which the bare snippet misses (and
+//     which `{ … }` braces only ever hold — object literals/destructuring use `:`, never `as`).
+//   - test files — fixtures must fabricate branded ids from string literals (`'x' as Foo['id']`), which
+//     has no cast-free form. This plugin is scoped to non-test `src/` in biome.jsonc (overrides), so the
+//     ~36 fixture casts never reach it.
+//
+// Legit production casts DO still trip this (by design — make the exception explicit). Silence each with a
+// `// biome-ignore` that says WHY. The known-legit shapes today:
+//   - `{ '--x': v } as CSSProperties` — CSS custom properties aren't in the React type.
+//   - `Object.keys(x) as K[]`         — TS widens object keys to `string`.
+//   - supabase JSON columns read back as a concrete shape.
+`$expr as $type` where {
+	$type <: not r"^const$",
+	$expr <: not within `import $imports from $source` ,
+	$expr <: not within `{ $a as $b, $rest }` ,
+	register_diagnostic(span=$type, message="Never cast with `as` — use TypeID branded types and narrowing (CLAUDE.md). `as const` is exempt; for a genuinely-needed cast add a `// biome-ignore` explaining why.", severity="error")
+}

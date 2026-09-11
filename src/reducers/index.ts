@@ -1,13 +1,10 @@
-import { connectRouter } from 'connected-react-router'
-import { History } from 'history'
-import { combineReducers } from 'redux'
+import { combineReducers } from '@reduxjs/toolkit'
 import tracker from './tracker'
 import version from './version'
 
-const reducers = (history: History) => combineReducers({
-	router: connectRouter(history),
+const rootReducer = combineReducers({
 	tracker,
 	version
 })
 
-export default reducers
+export default rootReducer

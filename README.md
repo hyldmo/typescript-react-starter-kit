@@ -1,30 +1,75 @@
-# Typescript React Starter Kit #
-![.github/workflows/main.yml](https://github.com/hyldmo/typescript-react-starter-kit/workflows/.github/workflows/main.yml/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/hyldmo/typescript-react-starter-kit/badge.svg?branch=master)](https://coveralls.io/github/hyldmo/typescript-react-starter-kit?branch=master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/b2948fd44e995919bdf7/maintainability)](https://codeclimate.com/github/hyldmo/typescript-react-starter-kit/maintainability)
-[![dependencies Status](https://david-dm.org/hyldmo/typescript-react-starter-kit/status.svg)](https://david-dm.org/hyldmo/typescript-react-starter-kit)
-[![devDependencies Status](https://david-dm.org/hyldmo/typescript-react-starter-kit/dev-status.svg)](https://david-dm.org/hyldmo/typescript-react-starter-kit?type=dev)
-[![Known Vulnerabilities](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit/badge.svg?targetFile=package.json)](https://snyk.io/test/github/hyldmo/typescript-react-starter-kit?targetFile=package.json)
-----
+# Typescript React Starter Kit
 
-## Overview ##
-This repository showcases a bunch of different technologies and frameworks that I use when developing React projects, combined into an opinionated boilerplate.
+Opinionated starter for React + Redux Saga apps. One static build deploys to
+either [GitHub Pages](#github-pages) or a [Cloudflare Worker](#cloudflare-worker)
+(Static Assets) with no code changes.
 
-## Features ##
-- [Typescript](http://www.typescriptlang.org/) for type-checking
-- [TSLint](https://palantir.github.io/tslint/) to ensure consistent style
-- [React](https://reactjs.org/)
-- [React Router](https://reacttraining.com/react-router/)
-- [Redux](https://redux.js.org/) + [Redux Saga](https://redux-saga.js.org/)
-- [Cypress](https://www.cypress.io/) for end-to-end testing
-- [Jest](https://facebook.github.io/jest/) for unit/snapshot testing
-- Code coverage from [coveralls.io](https://coveralls.io/)
-- [Webpack](https://webpack.js.org/)
-  - Hot Module Reloading
-  - Bundle hashing to allow for easy caching (npm dependencies are also splitted so that you can update your source code without making the user reload the vendor bundle)
-- [less](http://lesscss.org/) support
-- Autoprefixing with [PostCSS](http://postcss.org/)
-- [Stylelint](https://stylelint.io/) for linting less/CSS
-- [Github Actions](https://github.com/hyldmo/typescript-react-starter-kit/actions) for CI
+## Stack
 
-To get started, run `yarn` to fetch dependencies and `yarn dev` to start the development server
+- [React 19](https://reactjs.org/) + [React Router 7](https://reactrouter.com/)
+  (`BrowserRouter`, basename follows the deploy base path)
+- [Redux Toolkit](https://redux-toolkit.js.org/) +
+  [redux-saga](https://redux-saga.js.org/) via
+  [typed-redux-saga](https://github.com/agiledigital/typed-redux-saga) (typed effects)
+- [Tailwind CSS 4](https://tailwindcss.com/) (via `@tailwindcss/vite`)
+- [Vite 7](https://vitejs.dev/) (dev, build, preview, Vitest)
+- [TypeScript](https://www.typescriptlang.org/) strict
+- [Biome](https://biomejs.dev/) for lint + format, including the shared
+  `no-casts` / `component-decl` / `fc-props` GritQL plugins in `biome/` and the
+  `redux-saga/effects` → `typed-redux-saga` import rule
+- [Vitest](https://vitest.dev/) + Testing Library for tests
+- [Yarn 4](https://yarnpkg.com/) (`node-modules` linker)
+
+## Scripts
+
+```bash
+yarn dev              # Vite dev server
+yarn build            # Static build for Workers (base /)
+yarn build:pages      # Static build for GH Pages (base /<repo>/ + 404.html)
+yarn preview          # Preview the Workers build locally
+yarn preview:worker   # Serve the build through the Worker locally
+yarn deploy:worker    # Deploy build to Cloudflare Workers
+yarn lint             # Biome check
+yarn fix              # Biome check + autofix
+yarn typecheck        # tsc --noEmit (app)
+yarn test             # Vitest run
+yarn check            # lint + typecheck + test
+```
+
+## Deploy targets
+
+Both targets serve the same `dist/` output. The only difference is the base
+path: `/` on Workers, `/<repo>/` on GH Pages. The router reads it from
+`import.meta.env.BASE_URL`, so no code changes are needed per target.
+
+### GitHub Pages
+
+`yarn build:pages` builds with `VITE_BASE=/typescript-react-starter-kit/` and
+copies `dist/index.html` → `dist/404.html` (GH Pages has no SPA fallback, so
+deep links are served through the 404 page). `.github/workflows/pages.yml`
+builds and deploys on every push to `master`. If you fork under a different
+repo name, update `VITE_BASE` in `build:pages` and the `BrowserRouter` keeps
+working untouched.
+
+### Cloudflare Worker
+
+`workers/wrangler.jsonc` is a plain Worker + Static Assets config
+(`not_found_handling: single-page-application`). `workers/src/index.ts`
+answers `/api/*` (currently a `501` stub slot for a future API) and serves the
+static build for everything else. `.github/workflows/workers.yml` builds and
+deploys on every push to `master`; it needs `CLOUDFLARE_API_TOKEN` +
+`CLOUDFLARE_ACCOUNT_ID` secrets.
+
+## Demo app
+
+An exercise tracker with three routes (`/`, `/tracker`, `/about`) showing
+slices + sagas (persist to localStorage, fetch version over HTTP), a Zod
+validated form, and schedule tables derived from the store.
+
+## Conventions
+
+- Imports from `src/` use the `~/` prefix (tsconfig paths + Vite alias)
+- Components are `const Foo: FC<FooProps>` with named prop interfaces
+- No `as` casts — narrow or validate (Zod) instead
+- Saga effects import from `typed-redux-saga`, never `redux-saga/effects`
+- Tabs, single quotes, no semicolons (enforced by Biome)
