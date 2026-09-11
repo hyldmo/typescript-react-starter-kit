@@ -236,7 +236,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@biomejs/biome@npm:^2.4.4":
+"@biomejs/biome@npm:^2.5.12":
   version: 2.5.12
   resolution: "@biomejs/biome@npm:2.5.12"
   dependencies:
@@ -3899,7 +3899,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "typescript-react-starter-kit@workspace:."
   dependencies:
-    "@biomejs/biome": "npm:^2.4.4"
+    "@biomejs/biome": "npm:^2.5.12"
     "@cloudflare/workers-types": "npm:^4.20250911.0"
     "@reduxjs/toolkit": "npm:^2.5.1"
     "@tailwindcss/vite": "npm:^4.1.18"

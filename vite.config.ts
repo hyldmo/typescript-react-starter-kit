@@ -22,7 +22,7 @@ export default defineConfig({
 	plugins: [react(), tailwind()],
 	resolve: {
 		alias: {
-			'~': path.resolve(__dirname, 'src')
+			'~': path.resolve(import.meta.dirname, 'src')
 		}
 	},
 	test: {

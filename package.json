@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "preview:worker": "wrangler dev --config workers/wrangler.jsonc",
     "deploy:worker": "wrangler deploy --config workers/wrangler.jsonc",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p workers",
     "lint": "biome check .",
     "fix": "biome check --write .",
     "test": "vitest run",
@@ -40,7 +40,7 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.4.4",
+    "@biomejs/biome": "^2.5.12",
     "@cloudflare/workers-types": "^4.20250911.0",
     "@tailwindcss/vite": "^4.1.18",
     "@testing-library/dom": "^10.4.1",
