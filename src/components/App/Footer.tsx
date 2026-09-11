@@ -1,11 +1,10 @@
-import React from 'react'
-import { snakeToCamel } from 'utils'
+import type { FC } from 'react'
+import { snakeToCamel } from '~/utils'
 
-const Footer: React.FunctionComponent = () =>  (
-	<footer>
+const Footer: FC = () => (
+	<footer className="border-neutral-200 border-t py-4 text-neutral-500 text-sm">
 		<span>
-			{snakeToCamel(process.env.PACKAGE_NAME as string)}
-			&nbsp;{process.env.PACKAGE_VERSION}
+			{snakeToCamel(import.meta.env.VITE_APP_NAME)} {import.meta.env.VITE_APP_VERSION}
 		</span>
 	</footer>
 )

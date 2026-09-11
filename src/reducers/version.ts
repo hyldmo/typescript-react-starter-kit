@@ -1,10 +1,15 @@
-import { Action } from 'actions'
+import { createAction, createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
-export default function (state = '', action: Action) {
-	switch (action.type) {
-		case 'VERSION_FETCHED':
-			return action.payload
-		default:
-			return state
+// Saga trigger: fetch the latest released version over HTTP.
+export const fetchVersion = createAction<string>('version/fetchVersion')
+
+const versionSlice = createSlice({
+	name: 'version',
+	initialState: '',
+	reducers: {
+		versionFetched: (_state, action: PayloadAction<string>) => action.payload
 	}
-}
+})
+
+export const { versionFetched } = versionSlice.actions
+export default versionSlice.reducer

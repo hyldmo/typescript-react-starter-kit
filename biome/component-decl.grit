@@ -1,0 +1,13 @@
+language js(typescript, jsx)
+
+// Slate convention (CLAUDE.md § FC prop interfaces): declare React components as
+// `const Foo: FC<Props> = ...`, not `function Foo() {}`.
+// The pattern below matches only plain function *declarations*; two shapes are deliberately left alone:
+//   - `export default function Page()` — React Router 7 route modules MUST default-export their
+//     component, and route components take no props (they read loader data via hooks), so `FC<Props>`
+//     is the wrong shape for them. Flagging these would fight the framework, not enforce the rule.
+//   - `function Foo<T>(...)` — generic components can't be expressed cleanly via `FC<Props>`.
+`function $name($args) { $body }` where {
+	$name <: r"[A-Z][a-zA-Z0-9]*",
+	register_diagnostic(span=$name, message="Declare React components as `const Foo: FC<Props> = ...`, not `function Foo(...)` (CLAUDE.md § FC prop interfaces).")
+}

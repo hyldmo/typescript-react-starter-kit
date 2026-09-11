@@ -1,14 +1,8 @@
-import React from 'react'
-import renderer from 'react-test-renderer'
+import { render, screen } from '@testing-library/react'
+import { expect, test } from 'vitest'
+import Root from '../src/components/App'
 
-import '../__mocks__'
-
-import App from '../src/components/App'
-
-it('renders correctly', () => {
-	renderer
-		.create(<App />)
-		.toJSON()
-	// TODO (Optional): Turn on snapshot testing
-	// expect(tree).toMatchSnapshot()
+test('renders the home page', () => {
+	render(<Root />)
+	expect(screen.getByText('Hello world')).toBeInTheDocument()
 })

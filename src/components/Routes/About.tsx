@@ -1,35 +1,26 @@
-import { Actions } from 'actions'
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
-import { State } from 'types'
+import type { FC } from 'react'
+import { useEffect } from 'react'
+import { Actions } from '~/actions'
+import { useAppDispatch, useAppSelector } from '../../configureStore'
 
-type Props = ReturnType<typeof mapStateToProps> & typeof dispatchToProps
+const About: FC = () => {
+	const version = useAppSelector(s => s.version)
+	const dispatch = useAppDispatch()
 
-const About: React.FunctionComponent<Props> = ({ version, fetchVersion }) => {
 	useEffect(() => {
-		fetchVersion('https://raw.githubusercontent.com/hyldmo/typescript-react-starter-kit/master/package.json')
-	})
+		dispatch(
+			Actions.fetchVersion(
+				'https://raw.githubusercontent.com/hyldmo/typescript-react-starter-kit/master/package.json'
+			)
+		)
+	}, [dispatch])
 
 	return (
 		<>
-			<h1>About {process.env.PACKAGE_NAME}</h1>
-			<h2></h2>
-			<h2>
-				Version: {version}
-			</h2>
+			<h1 className="font-bold text-2xl">About {import.meta.env.VITE_APP_NAME}</h1>
+			<h2 className="mt-2 text-lg">Version: {version}</h2>
 		</>
 	)
 }
 
-const mapStateToProps = (state: State) => ({
-	version: state.version
-})
-
-const dispatchToProps = {
-	fetchVersion: Actions.fetchVersion
-}
-
-export default connect(
-	mapStateToProps,
-	dispatchToProps
-)(About)
+export default About

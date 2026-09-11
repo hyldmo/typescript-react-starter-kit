@@ -1,14 +1,10 @@
-import TrackerActions from './tracker'
-import VersionActions from './version'
-import { GetMetaActions } from 'utils'
+import { addActivity, loadSave, saveLoaded } from '../reducers/tracker'
+import { fetchVersion, versionFetched } from '../reducers/version'
 
 export const Actions = {
-	...TrackerActions,
-	...VersionActions
+	addActivity,
+	saveLoaded,
+	loadSave,
+	fetchVersion,
+	versionFetched
 }
-
-export type ActionCreator = typeof Actions[keyof typeof Actions]
-type A = ReturnType<ActionCreator>
-export type Action<TKey extends ActionTypes = any, TAction extends A = A> = TAction extends { type: TKey } ? TAction : never
-export type MetaAction = GetMetaActions<Action>
-export type ActionTypes = Action['type']

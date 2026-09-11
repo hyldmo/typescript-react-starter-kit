@@ -1,0 +1,182 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.12/schema.json",
+  "files": {
+    "includes": ["**", "!dist"]
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "root": "."
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "tab",
+    "indentWidth": 4,
+    "lineEnding": "lf",
+    "lineWidth": 120,
+    "bracketSpacing": true
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "react": "recommended",
+      "types": "recommended"
+    },
+    "rules": {
+      "a11y": {
+        "useSemanticElements": "off",
+        "noNoninteractiveElementToInteractiveRole": "off",
+        "noLabelWithoutControl": {
+          "level": "error",
+          "options": {
+            "inputComponents": ["Input"]
+          }
+        },
+        "useValidAutocomplete": "error"
+      },
+      "complexity": {
+        "useArrayFind": "error",
+        "noExcessiveNestedTestSuites": "error",
+        "noUselessStringRaw": "error",
+        "noUselessStringConcat": "error",
+        "useSimplifiedLogicExpression": "error",
+        "useWhile": "error",
+        "noBannedTypes": "off",
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": {
+            "maxAllowedComplexity": 50
+          }
+        }
+      },
+      "correctness": {
+        "noRestrictedElements": "error",
+        "noUndeclaredDependencies": "warn",
+        "useExhaustiveDependencies": "error",
+        "noUnusedVariables": {
+          "level": "warn",
+          "fix": "none"
+        }
+      },
+      "suspicious": {
+        "useIterableCallbackReturn": "off",
+        "noProto": "error",
+        "noLeakedRender": "off",
+        "noConsole": {
+          "level": "warn",
+          "fix": "none",
+          "options": {
+            "allow": ["info", "warn", "error"]
+          }
+        },
+        "noConstantBinaryExpressions": "error",
+        "noDuplicateTestHooks": "error",
+        "noEmptyBlockStatements": "error",
+        "noExportsInTest": "error",
+        "noExplicitAny": "off",
+        "noFocusedTests": "warn",
+        "noMisplacedAssertion": "error"
+      },
+      "style": {
+        "noExportedImports": "error",
+        "noNonNullAssertion": "off",
+        "useConsistentTypeDefinitions": "error",
+        "useConsistentEnumValueType": "error",
+        "useConsistentMethodSignatures": "error",
+        "useErrorCause": "error",
+        "noMultiAssign": "error",
+        "noExcessiveLinesPerFile": {
+          "level": "error",
+          "options": {
+            "maxLines": 600
+          }
+        },
+        "noRestrictedImports": {
+          "level": "error",
+          "options": {
+            "paths": {
+              "redux-saga/effects": "Import from typed-redux-saga instead"
+            }
+          }
+        }
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "error",
+          "fix": "safe",
+          "options": {
+            "functions": ["cn"]
+          }
+        },
+        "useImportsFirst": "error",
+        "useAwaitThenable": "off"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "preserve",
+      "trailingCommas": "none",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "asNeeded",
+      "bracketSameLine": false,
+      "quoteStyle": "single",
+      "attributePosition": "auto",
+      "bracketSpacing": true
+    },
+    "linter": {
+      "enabled": true
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["src/**"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noNodejsModules": "error"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["scripts/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.test.ts", "**/*.test.tsx"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noExcessiveLinesPerFile": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["src/**", "!**/*.test.ts", "!**/*.test.tsx"],
+      "plugins": ["./biome/component-decl.grit", "./biome/fc-props.grit", "./biome/no-casts.grit"]
+    },
+    {
+      "includes": ["**/package.json", "**/*.yml", "**/*.yaml", "**/*.json", "**/*.jsonc"],
+      "formatter": {
+        "indentStyle": "space",
+        "indentWidth": 2,
+        "lineWidth": 200
+      }
+    }
+  ]
+}

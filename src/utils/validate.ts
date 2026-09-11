@@ -1,17 +1,25 @@
+import { z } from 'zod'
 
-// No typings for joi-browser so have to use @types/joi's
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-export const Joi: joi = require('joi-browser')
-import { AnySchema, Root as joi } from 'joi'
-import { Activity } from 'types'
+// Form fields arrive as strings; the regex keeps the submit button disabled
+// until every field holds a real value (mirrors the old Joi behaviour).
+export const activitySchema = z.object({
+	name: z.string().min(1),
+	max: z.string().regex(/^\d+$/),
+	intervalsPerSession: z.string().regex(/^\d+$/),
+	sessionsPerWeek: z.string().regex(/^\d+$/)
+})
 
-type Schema<T> = {
-	[K in keyof T]: AnySchema
-}
+export type ActivityForm = z.infer<typeof activitySchema>
 
-export const activitySchema: Schema<Omit<Activity, 'startDate'>> = {
-	name: Joi.string().required(),
-	max: Joi.number().required(),
-	intervalsPerSession: Joi.number().required(),
-	sessionsPerWeek: Joi.number().required()
-}
+// What localStorage holds: parsed JSON, so startDate is an ISO string there.
+const storedActivitySchema = z.object({
+	name: z.string(),
+	startDate: z.coerce.date(),
+	max: z.number(),
+	intervalsPerSession: z.number(),
+	sessionsPerWeek: z.number()
+})
+
+export const trackerSchema = z.object({
+	activities: z.array(storedActivitySchema)
+})

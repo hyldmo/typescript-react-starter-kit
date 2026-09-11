@@ -1,14 +1,14 @@
-import cn from 'classnames'
-import * as React from 'react'
+import type { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from 'react'
+import { cn } from '~/utils'
 
-import './ButtonBar.less'
+export interface ButtonBarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+	children?: ReactNode
+}
 
-type Props = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-
-const Button: React.SFC<Props> = ({ className, children, ...rest }) => (
-	<div className={cn('buttonbar', className)} {...rest}>
+const ButtonBar: FC<ButtonBarProps> = ({ className, children, ...rest }) => (
+	<div className={cn('flex flex-wrap gap-2', className)} {...rest}>
 		{children}
 	</div>
 )
 
-export default Button
+export default ButtonBar

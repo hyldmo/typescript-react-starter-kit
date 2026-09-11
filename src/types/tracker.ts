@@ -1,4 +1,4 @@
-export type Activity = {
+export interface Activity {
 	name: string
 	startDate: Date
 	max: number
@@ -6,7 +6,7 @@ export type Activity = {
 	sessionsPerWeek: number
 }
 
-export type ActivityValue = {
+export interface ActivityValue {
 	base: number
 	setModifier: number
 	bonus: number
